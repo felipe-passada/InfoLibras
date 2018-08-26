@@ -5,6 +5,7 @@ Aplicação de acessibilidade para surdos no IFSP - Campus GRU
 ## Iniciando
 
 Baixe o projeto na sua máquina com:
+
 ``$git clone git@git.ifspguarulhos.edu.br:gu1662287/InfoLibras-IFSP.git``
 
 ### Pré-requisitos
