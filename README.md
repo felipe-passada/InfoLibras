@@ -20,13 +20,21 @@ Para o projeto rodar em sua maquina, voce necessita das seguintes depedencias:
 
 Depois de clonar o projeto em sua maquina sera necessario rodar 2 comandos:
 
-1 - para instalar as dependencias de back end.
+1 - para instalar as dependencias do Composer.
 
 ``$ composer install``
 
-2 - para instalar as dependencias do front end
+2 - para instalar as dependencias do NPM.
 
 ``$ npm install``
+
+3 - Crie uma copia do arquivo .env
+
+``$ cp .env.example .env``
+
+4 - Gere a chave de encriptaçao da aplicacao
+
+``$ php artisan key:generate`` 
 
 ## Rodando Testes
 
