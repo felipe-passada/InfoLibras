@@ -12,3 +12,7 @@
 */
 
 Route::get('/pages','PagesController@index');
+Route::get('/qrcode','QRCodeController@make');
+Route::get('/url','QRCodeController@url');
+
+
