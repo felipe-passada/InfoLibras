@@ -1,0 +1,36 @@
+before_script:
+ - echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+ - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+ - apt-get update
+ - apt-get install -y heroku-toolbelt
+ - gem install dpl
+
+image: php:latest
+
+stages:
+- development
+- production
+
+development:
+  type: deploy
+  stage: production
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=info-libras --api-key=$HEROKU_API_KEY
+  only:
+- dev
+
+production:
+  type: deploy
+  stage: production
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=infol-libras --api-key=$HEROKU_API_KEY
+  only:
+- master
