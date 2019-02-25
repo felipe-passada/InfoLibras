@@ -159,7 +159,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        LaravelQRCode\Providers\QRCodeServiceProvider::class,     
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class    
 
     ],
 
@@ -209,7 +209,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'QRCode' => LaravelQRCode\Facades\QRCode::class,
+        'QRCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
 
