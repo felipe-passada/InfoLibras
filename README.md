@@ -2,39 +2,71 @@
 
 Aplicação de acessibilidade para surdos no IFSP - Campus GRU
 
+## Pré-requisitos
+Para o projeto rodar, voce necessita das seguintes depedencias:
+
+PHP:
+- PHP >= 7.1.3
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Tokenizer PHP Extension
+- XML PHP Extension
+- Ctype PHP Extension
+- JSON PHP Extension
+- BCMath PHP Extension
+
+DB:
+- MYSQL OU MARIADB
+
+Em ambiente de prod voce necessitara um servidor para rodar a aplicacao, voce pode usar solucoes como o [Apache2](https://httpd.apache.org/) ou [NGINX](https://www.nginx.com/).
+
+
 ## Iniciando
 
-Baixe o projeto na sua máquina com:
+Clone o projeto na sua maquina:
 
-``$git clone git@git.ifspguarulhos.edu.br:gu1662287/InfoLibras-IFSP.git``
-
-### Pré-requisitos
-Para o projeto rodar em sua maquina, voce necessita das seguintes depedencias:
 ````
-* PHP >= 7.1.3
-* Composer
-* NPM >= 3.5.2
+$git clone http://git.ifspguarulhos.edu.br/gu1662287/InfoLibras-IFSP.git
 ````
+### Configuracao da aplicacao
+Depois de clonar em sua maquina sera necessario baixar as dependencias do projeto, isso sera necessario somente na primeira vez que voce baixar o projeto.
 
-### Instalação
+1. O composer é utilizado para gerenciar as dependencias do php, e nesse caso do framewok Laravel. utilize o comando pra instalar as dependencias:
 
-Depois de clonar o projeto em sua maquina sera necessario rodar 2 comandos:
+    ````
+    $ composer install
+    ````
 
-1 - para instalar as dependencias do Composer.
+2. Para gerencias as dependencias do front-end da aplicacao utilizaremos o NPM.
 
-``$ composer install``
+    ````
+    $ npm install
+    ````
 
-2 - para instalar as dependencias do NPM.
+3. Assim que fizer os passos acima, precisamos de um arquivo .env, o Laravel este arquivo para armazenar as variaveis de ambiente da aplicao.
 
-``$ npm install``
+    ````
+    $ cp .env.example .env
+    ````
 
-3 - Crie uma copia do arquivo .env
+4. No arquivo .env existe uma propriedade chamada `APP_KEY=` o framework utiliza essa propriedade para trazer seguranca a aplicao, nas sessoes e outros dados encriptados, alem disso sem a chave a aplicao pode nao rodar. Gere a chave com o seguinte comando
 
-``$ cp .env.example .env``
+    ````
+    $ php artisan key:generate
+    ```` 
+5. Criando o banco de dados, para voce persistir `"criar"` as tabelas da aplicao no banco primeiro voce deve, criar o banco de dados manualmente. Depois disso rode o seguinte comando para gerar as tabelas:
+    ````
+    $ php artisan migrate
+    ````
+6. Depois desses passos, para voce rodar a aplicao localmente voce pode utilizar o artisan para subir um server com a aplicao, atreves do comando:
 
-4 - Gere a chave de encriptaçao da aplicacao
-
-``$ php artisan key:generate`` 
+    ````
+    $ php artisan serve
+    ````
+---
+## Informacoes adicionais
+Caso voce tenha alguma duvida que nao ficou claro nesta doc. Voce pode consultar a documentacao oficial do [Laravel](https://laravel.com/docs/5.8)
 
 ## Rodando Testes
 
