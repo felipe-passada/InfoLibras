@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="itlUL6EUIaLKU9EWv4H7NkYpj097ZfGy8e7dd7Vq">
+
+    <title>Home</title>
+
+    <!-- Scripts -->
+    <script src="Home_arquivos/app.js" defer="defer"></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="http://fonts.gstatic.com/">
+    <link href="Home_arquivos/css.css" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template-->
+      <link href="Home_arquivos/all.css" rel="stylesheet" type="text/css">
+      <link href="Home_arquivos/css_002.css" rel="stylesheet">
+
+      <!-- Custom styles for this template-->
+      <link href="Home_arquivos/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="Home_arquivos/app.css" rel="stylesheet">
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+<body class="bg-gradient" style="background-color: #4F4F4F;">
+    <div id="app">
+           
+
+              <!-- Main Content -->
+              <div id="content">
+
+                        <!-- Topbar -->
+                        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-0 static-top shadow">
+
+                        <a class="navbar-brand"><img class="img-profile " style="width: 240px; height: 70px;" src="Home_arquivos/Guarulhos-02.jpg">
+                        </a>
+
+                          <!-- Sidebar Toggle (Topbar) -->
+                          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                          </button>
+
+                          <!-- Topbar Search -->
+                          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                              <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                  <i class="fas fa-search fa-sm"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+
+                          <!-- Topbar Navbar -->
+                          <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                              </a>
+                              <!-- Dropdown - Messages -->
+                              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </li>
+
+                         
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <!-- Nav Item - User Information -->
+                            
+
+                            <li class="nav-item dropdown no-arrow">
+                                                                    </li><li class="nav-item">
+                                        <b><a class="nav-link btn-outline-light" style="color: #414141;" href="http://127.0.0.1:8000/login">Login</a></b>
+                                    </li>
+                                                                            <li class="nav-item">
+                                           <b><a class="nav-link btn-outline-light " style="color: #414141;" href="http://127.0.0.1:8000/register">Register</a></b>
+                                        </li>
+                                                                                              </ul>
+
+                        </nav>
+                        <!-- End of Topbar -->
+                </div>   
+            
+
+      
+ 
+
+        
+    
+
+        <div class="py-0">
+            
+
+
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Custom fonts for this template-->
+  <link href="Home_arquivos/all.css" rel="stylesheet" type="text/css">
+  <link href="Home_arquivos/css_002.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="Home_arquivos/sb-admin-2.css" rel="stylesheet">
+
+
+
+
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->    
+            <div class="card-header">Login</div>
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                  </div>
+                  <form method="POST" action="http://127.0.0.1:8000/login">
+                        <input type="hidden" name="_token" value="itlUL6EUIaLKU9EWv4H7NkYpj097ZfGy8e7dd7Vq">
+                    <div class="form-group">
+                       
+                     
+                      <div class="col-md-12">
+                                <input id="email" type="email" class="form-control" name="email" required="" autofocus="" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+
+                                                            </div>
+                    </div>
+                    <div class="form-group">
+                     
+                            
+
+                            <div class="col-md-12">
+                                <input id="password" type="password" class="form-control" name="password" required="" placeholder="Password">
+
+                                                            </div>
+                    
+
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-control custom-checkbox small">
+                        <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                        <label class="custom-control-label" for="remember">Remember Me</label>
+
+      
+                              
+                      </div>
+                    </div>
+                    <div class="form-group">
+                            <div class="col-md-12 ">
+                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Login
+                                </button>
+
+                                                                    <a class="btn btn-link" href="http://127.0.0.1:8000/password/reset">
+                                        Forgot Your Password?
+                                    </a>
+                                                    <hr>
+                </div>
+            </div>
+                  </form>
+                  <hr>
+               <!--    <div class="text-center">
+                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                  </div> -->
+<!--                   <div class="text-center">
+                    <a class="small" href="register.html">Create an Account!</a>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="Home_arquivos/jquery.js"></script>
+  <script src="Home_arquivos/bootstrap.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="Home_arquivos/jquery_002.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="Home_arquivos/sb-admin-2.js"></script>
+
+
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+      <script src="Home_arquivos/jquery.js"></script>
+      <script src="Home_arquivos/bootstrap.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="Home_arquivos/jquery_002.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="Home_arquivos/sb-admin-2.js"></script>
+
+      <!-- Page level plugins -->
+      <script src="Home_arquivos/Chart.js"></script>
+
+      <!-- Page level custom scripts -->
+      <script src="Home_arquivos/chart-area-demo.js"></script>
+      <script src="Home_arquivos/chart-pie-demo.js"></script>
+
+
+
+
+ 
+</body></html>
+<!-- <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Login</div>
+
+                <div class="card-body">
+                    <form method="POST" action="http://127.0.0.1:8000/login">
+                        <input type="hidden" name="_token" value="itlUL6EUIaLKU9EWv4H7NkYpj097ZfGy8e7dd7Vq">
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" >
+
+                                    <label class="form-check-label" for="remember">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+
+                                                                    <a class="btn btn-link" href="http://127.0.0.1:8000/password/reset">
+                                        Forgot Your Password?
+                                    </a>
+                                                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
