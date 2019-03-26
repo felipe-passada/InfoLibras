@@ -1,27 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app_login')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-</head>
-
-<body class="bg-gradient" style="background-color: #4F4F4F;">
 
   <div class="container">
 
@@ -29,8 +9,8 @@
     <div class="row justify-content-center">
 
       <div class="col-xl-6">
-
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div style="margin-top:70px;"></div>
+        <div class="card o-hidden border-0 shadow-lg ">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->    
             <div class="row">
@@ -48,7 +28,7 @@
                        
                      
                       <div class="col-md-12">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de e-mail...">
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
@@ -62,7 +42,7 @@
                             
 
                             <div class="col-md-12">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required class="form-control form-control-user" id="exampleInputPassword" placeholder="Senha">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -73,30 +53,57 @@
                     
 
                     </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
+                    <div class="form-group ">
+                        <div class="col-md-12">
+                          <div class="custom-control custom-checkbox small ">
+                            <input type="checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" id="customCheck">
+                            <label class="custom-control-label" for="remember">{{ __('Lembre de mim') }}</label>
 
-      
-                              
-                      </div>
+          
+                                  
+                          </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                            <div class="col-md-12 ">
-                    <button type="submit" class="btn btn-success btn-user btn-block">
-                                    {{ __('Login') }}
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-2 col-form-label text-md-right"></label>
+                            <div class="col-md-8 ">
+                                <button type="submit" class="btn btn-info btn-user btn-block">
+                                    {{ __('Entrar') }}
                                 </button>
 
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password-confirm" class="col-md-1 col-form-label text-md-right"></label>
+                       
+                            <div class="col-md-10 ">
+                                
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                    <a class="nav-link btn-outline-light btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Esqueceu sua senha?') }}
                                     </a>
                                 @endif
-                    <hr>
-                </div>
-            </div>
+                                
+                            </div>
+                     </div>      
+                     <div class="form-group row"> 
+                        <label for="password-confirm" class="col-md-1 col-form-label text-md-right"></label>
+                            <div class="col-md-10">
+                                @if (Route::has('register'))
+                                        
+                                           <b><a class="nav-link btn-outline-light btn btn-link " href="{{ route('register') }}">{{ __('Crie a sua conta aqui!') }}</a></b>
+                                       
+                                    @endif
+                                   
+                            </div>
+
+                    </div>
+                    <div class="col-md-12 ">
+                            <hr>
+                        </div>
+                  
                   </form>
+
                   <hr>
                <!--    <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
@@ -115,20 +122,6 @@
     </div>
 
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-</body>
-
-</html>
 
 <!-- <div class="container">
     <div class="row justify-content-center">
