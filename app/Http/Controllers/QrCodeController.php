@@ -10,44 +10,66 @@ use Illuminate\Support\Facades\Storage;
 
 class QrCodeController extends Controller
 {
-    public function __construct(QrcodeModel $qrcodeModel) {
-        $this->model = $qrcodeModel;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function getAll() {
-        $qrcodeModel = $this->model->all();
-        return response()->json($qrcodeModel);
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('admin/qrcode');
     }
 
-    public function get($id) {
-        $qrcodeModel = $this->model->find($id);
-        return response()->json($qrcodeModel);
-    }
 
-    public function store(Request $request) {
-        $data = [
-            'title' => $title = $request->input('title'),
-            'content' => $content = $request->input('content'),
-            'path' => $path = public_path('storage/qrcode/'. Str::snake($title) . '.svg'),
-            'description' => $description = $request->input('description')
-        ];
+    // public function __construct(QrcodeModel $qrcodeModel) {
+    //     $this->model = $qrcodeModel;
+    // }
 
-        $qrcode = \QrCode::generate($content);
-        Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
+    // public function getAll() {
+    //     $qrcodeModel = $this->model->all();
+    //     return response()->json($qrcodeModel);
+    // }
+
+    // public function get($id) {
+    //     $qrcodeModel = $this->model->find($id);
+    //     return response()->json($qrcodeModel);
+    // }
+
+    // public function store(Request $request) {
+    //     $data = [
+    //         'title' => $title = $request->input('title'),
+    //         'content' => $content = $request->input('content'),
+    //         'path' => $path = public_path('storage/qrcode/'. Str::snake($title) . '.svg'),
+    //         'description' => $description = $request->input('description')
+    //     ];
+
+    //     $qrcode = \QrCode::generate($content);
+    //     Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
         
-        $qrcodeModel = $this->model->create($data);
-        return response()->json($qrcodeModel);
-    }
+    //     $qrcodeModel = $this->model->create($data);
+    //     return response()->json($qrcodeModel);
+    // }
 
-    public function update($id, Request $request) {
-        $qrcodeModel = $this->model->find($id)
-            ->update($request->all());
-        return response()->json($qrcodeModel);
-    }
+    // public function update($id, Request $request) {
+    //     $qrcodeModel = $this->model->find($id)
+    //         ->update($request->all());
+    //     return response()->json($qrcodeModel);
+    // }
 
-    public function destroy($id) {
-        $qrcodeModel = $this->model->find($id)
-            ->delete();
-        return response()->json($qrcodeModel);
-    }
+    // public function destroy($id) {
+    //     $qrcodeModel = $this->model->find($id)
+    //         ->delete();
+    //     return response()->json($qrcodeModel);
+    // }
 }
