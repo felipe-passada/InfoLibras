@@ -25,7 +25,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gradient" style="background-image: url('img/background.jpg');">
+<body class="bg-gradient" style="background-image: url('/img/background.jpg');">
     <div id="app">
            
 
