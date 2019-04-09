@@ -16,11 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-// Route::prefix('qrcode')->group(function() {
-//     Route::get('/', 'QrCodeController@getAll');
-//     Route::get('/{id}', 'QrCodeController@get');
-//     Route::post('/', 'QrCodeController@store');
-//     Route::put('/{id}', 'QrCodeController@update');
-//     Route::delete('/{id}','QrCodeController@destroy');
-// });
