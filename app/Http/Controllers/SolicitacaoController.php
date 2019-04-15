@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gate;
 
 class SolicitacaoController extends Controller
 {
@@ -23,6 +24,10 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isServidor')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('funcionario/solicitacao');
     }
 }

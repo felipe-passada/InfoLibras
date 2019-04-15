@@ -22,8 +22,9 @@
       <div class="card col-12">
 
         <div class="card-body">
-          <form method="POST" action="{{ route('register') }}">
-            {{ csrf_field() }}
+          <form method="POST" action="{{ route('cadastrarUsuario') }}">
+            <!-- {{ csrf_field() }} -->
+            @csrf
             <h6 class="heading-small text-muted mb-4">Cadastro</h6>
             <div class="pl-lg-4">
 
@@ -31,7 +32,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Nome</label>
-                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="name" value="{{ old('name') }}" required autofocus>
+                    <input id="name" name="formNome" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" value="{{ old('name') }}" required autofocus>
 
                     @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
@@ -44,7 +45,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Email</label>
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="input-email" name="email" value="{{ old('email') }}" required>
+                    <input id="email" name="formEmail" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="input-email" value="{{ old('email') }}" required>
 
                     @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
@@ -55,7 +56,7 @@
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">GU</label>
@@ -68,14 +69,14 @@
                     @endif
                   </div>
                 </div>
-              </div>
+              </div> -->
 
 
               <div class="row">
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Senha</label>
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input id="password" name="formPassword" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required>
 
                     @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
@@ -99,18 +100,18 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label" for="input-last-name">Tipo</label>
-                    <select class="form-control{{ $errors->has('tipo') ? ' is-invalid' : '' }}" name="tipo" required id="tipo" type="tipo">
-                      <option>Administração</option>
-                      <option>Funcionário</option>
-                      <option>Interprete</option>
-                      <option>Gestor Departamento</option>
-                      <option>Audio Visual</option>
-                      <option>Usuario comum</option>
+                    <select class="form-control{{ $errors->has('user_type') ? ' is-invalid' : '' }}" name="formUserType" required id="user_type" type="user_type">
+                      <option name="tipo" value="admin" type="admin">Administração</option>
+                      <option name="tipo" value="servidor" type="servidor">Funcionário</option>
+                      <option name="tipo" value="interprete" type="interprete">Interprete</option>
+                      <option name="tipo" value="gestordepartemento" type="gestordepartemento">Gestor Departamento</option>
+                      <option name="tipo" value="audiovisual" type="audiovisual">Audio Visual</option>
+                      <option name="tipo" value="user" type="user">Usuario comum</option>
                     </select>
 
-                    @if ($errors->has('tipo'))
+                    @if ($errors->has('user_type'))
                     <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('tipo') }}</strong>
+                      <strong>{{ $errors->first('user_type') }}</strong>
                     </span>
                     @endif
 

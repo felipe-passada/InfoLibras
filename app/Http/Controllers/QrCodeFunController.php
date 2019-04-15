@@ -7,6 +7,7 @@ use impleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\QrCodeModel;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Gate;
 
 class QrCodeFunController extends Controller
 {
@@ -28,6 +29,10 @@ class QrCodeFunController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isServidor')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+            
         return view('funcionario/qrcode');
     }
 

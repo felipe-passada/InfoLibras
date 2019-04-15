@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gate;
 
 class InterpreteController extends Controller
 {
@@ -23,6 +24,10 @@ class InterpreteController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isInterprete')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('admin/interprete');
     }
 }
