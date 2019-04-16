@@ -29,11 +29,11 @@ class QrCodeController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('isAdmin')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('admin/qrcode');
+        return view('funcionario/qrcode');
     }
 
 

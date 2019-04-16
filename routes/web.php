@@ -27,7 +27,7 @@ Route::get('/register', 'RegisterController@index')->middleware('guest')-> name(
 
 Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
 
-Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
+// Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
 
 Route::get( '/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
 
