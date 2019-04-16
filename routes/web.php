@@ -15,19 +15,26 @@ Route::get('/', function(){
     return view('/auth/login');
 });
 
+// Route::get('/register', function () {
+//     return view('/auth/register');
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/register', 'RegisterController@index')->middleware('guest')-> name('register');
+
 Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
 
-Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
+// Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
 
 Route::get( '/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
 
 Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->name('interprete');
 
 Route::get('/usuario', 'UsuarioController@index')->middleware('auth')->name('usuario');
+Route::post('/usuario/cadastrar', 'UsuarioController@cadastrar')->middleware('auth')->name('cadastrarUsuario');
 
 
 Route::resource('category','CategoryController');

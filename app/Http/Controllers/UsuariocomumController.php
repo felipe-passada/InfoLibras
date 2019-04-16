@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gate;
 
 class UsuariocomumController extends Controller
 {
@@ -23,6 +24,10 @@ class UsuariocomumController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isUser')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('usuariocomum/usuariocomum');
     }
 }

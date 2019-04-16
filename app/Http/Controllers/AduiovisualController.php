@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gate;
 
 class AduiovisualController extends Controller
 {
@@ -23,6 +24,10 @@ class AduiovisualController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows( 'isAudiovisual')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('aduiovisual/aduiovisual');
     }
 }

@@ -210,8 +210,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Configurações:</h6>
 
-              @if (Route::has('home'))
-              <a class="collapse-item" href="">
+              @if (Route::has('qrcode'))
+              <a class="collapse-item" href="{{ route('qrcode') }}">
                 <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
                 <span>QR Code</span>
               </a>
@@ -220,12 +220,12 @@
           </div>
 
           @if (Route::has('solicitacao'))
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('solicitacao') }}">
-              <i class="fas fa-fw fa-chart-area"></i>
-              <span>Solicitação</span></a>
-          </li>
-          @endif
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('solicitacao') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Solicitação</span></a>
+        </li>
+        @endif
         @endcan
 
         @can('isInterprete')

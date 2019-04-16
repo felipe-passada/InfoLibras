@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Gate;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,10 @@ class GestordepartamentoController extends Controller
      */
     public function index()
     {
+        if (!Gate::allows('isGestordepartemento')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('gestordepartamento/gestordepartamento');
     }
 }
