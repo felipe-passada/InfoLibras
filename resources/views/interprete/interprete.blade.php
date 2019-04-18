@@ -9,11 +9,32 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
 
+    <style>
+      #custom-button {
+        padding: 6px;
+        color: white;
+        background-color: #148275;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 236px;
+      }
+
+      #custom-button:hover {
+        background-color: #22a393;
+      }
+
+      #custom-text {
+        margin-left: 10px;
+        font-family: sans-serif;
+        color: #aaa;
+      }
+    </style>
+
     <div style="margin-top: 20px;"></div>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Funcionário</h1>
+      <h1 class="h3 mb-0 text-gray-800">VÍDEO</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -42,32 +63,28 @@
                   </div>
                 </div>
 
-                <div class="col-10">
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea3">Conteúdo</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
-                  </div>
-                </div>
-
               </div>
 
+              <div style="margin-top: 40px;"></div>
 
+              <div class="">
+                <input type="file" id="real-file" hidden="hidden" />
+                <button type="button" id="custom-button" class="btn">Escolhar um arquivo</button>
+                <span id="custom-text">Nenhum arquivo escolhido, ainda.</span>
+              </div>
 
-
-
-
-              <div style="margin-top: 30px;"></div>
+              <div style="margin-top: 48px;"></div>
 
               <div class="form-group row">
                 <label for="password-confirm" class=" col-form-label text-md-right"></label>
-                <div class="col-md-3 ">
+                <div class="col-3 ">
                   <button type="submit" class="btn btn-info btn-user btn-block">
-                    {{ __('Socicitação tradução') }}
+                    {{ __('Enviar') }}
                   </button>
                 </div>
 
               </div>
-              <div style="margin-top: 27px;"></div>
+              <div style="margin-top: 48px;"></div>
 
 
 
@@ -75,6 +92,28 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const realFileBtn = document.getElementById("real-file");
+      const customBtn = document.getElementById("custom-button");
+      const customTxt = document.getElementById("custom-text");
+
+      customBtn.addEventListener("click", function() {
+        realFileBtn.click();
+      });
+
+      realFileBtn.addEventListener("change", function() {
+        if (realFileBtn.value) {
+          customTxt.innerHTML = realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+          )[1];
+        } else {
+          customTxt.innerHTML = "Nenhum arquivo escolhido, ainda.";
+        }
+      });
+    </script>
+
+
 
 
 

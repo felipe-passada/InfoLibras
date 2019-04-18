@@ -23,6 +23,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
 
 <body class="page-top">
@@ -229,11 +230,14 @@
         @endcan
 
         @can('isInterprete')
+        @if (Route::has('interprete'))
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+          <a class="nav-link" href="{{ route('interprete') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Vídeo</span></a>
+            <span>Vídeo</span>
+          </a>
         </li>
+        @endif
         <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Configurações</span>
@@ -241,16 +245,6 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Configurações:</h6>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
-              <span>Usuário</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-              <span>QR Code</span>
-            </a>
 
             <a class="collapse-item" href="">
               <i class="fa fa-fw fa-sign-language" aria-hidden="true"></i>
@@ -290,7 +284,15 @@
         @endcan
 
         @can('isAudiovisual')
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        @if (Route::has('audiovisual'))
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('audiovisual') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Vídeo</span>
+          </a>
+        </li>
+        @endif
+        <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Configurações</span>
         </a>
@@ -303,18 +305,8 @@
               <span>Usuário</span>
             </a>
 
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-              <span>QR Code</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-sign-language" aria-hidden="true"></i>
-              <span>Intérprete</span>
-            </a>
-
           </div>
-        </div>
+        </div> -->
         @endcan
 
         @can('isUser')
@@ -381,6 +373,8 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

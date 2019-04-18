@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Gate;
 
-class AduiovisualController extends Controller
+class AudiovisualController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,10 +24,10 @@ class AduiovisualController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows( 'isAudiovisual')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('aduiovisual/aduiovisual');
+        return view('audiovisual/audiovisual');
     }
 }

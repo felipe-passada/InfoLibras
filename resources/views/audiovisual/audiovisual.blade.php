@@ -6,16 +6,35 @@
 <!-- Main Content -->
 <div id="content">
 
-
-
   <!-- Begin Page Content -->
   <div class="container-fluid">
+
+    <style>
+      #custom-button {
+        padding: 6px;
+        color: white;
+        background-color: #148275;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 236px;
+      }
+
+      #custom-button:hover {
+        background-color: #22a393;
+      }
+
+      #custom-text {
+        margin-left: 10px;
+        font-family: sans-serif;
+        color: #aaa;
+      }
+    </style>
 
     <div style="margin-top: 20px;"></div>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">USUÁRIO</h1>
+      <h1 class="h3 mb-0 text-gray-800">VÍDEO</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -31,88 +50,41 @@
             <div class="pl-lg-4">
 
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Nome</label>
-                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="name" value="{{ old('name') }}" required autofocus>
+                    <label class="form-control-label" for="input-username">Titulo</label>
+                    <input id="titulo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="titulo" value="{{ old('titulo') }}" required autofocus>
 
-                    @if ($errors->has('name'))
+                    @if ($errors->has('titulo'))
                     <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('name') }}</strong>
+                      <strong>{{ $errors->first('titulo') }}</strong>
                     </span>
                     @endif
                   </div>
                 </div>
 
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email</label>
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="input-email" name="email" value="{{ old('email') }}" required>
-
-                    @if ($errors->has('email'))
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                    @endif
-                  </div>
-                </div>
               </div>
 
+              <div style="margin-top: 40px;"></div>
 
-
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-username">Senha</label>
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                    @if ($errors->has('password'))
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                    @endif
-                  </div>
-                </div>
-
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-email">Confirme a Senha</label>
-
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                  </div>
-                </div>
+              <div class="">
+                <input type="file" id="real-file" hidden="hidden" />
+                <button type="button" id="custom-button" class="btn">Escolhar um arquivo</button>
+                <span id="custom-text">Nenhum arquivo escolhido, ainda.</span>
               </div>
 
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Tipo</label>
-                    <select class="form-control">
-                      <option>Administração</option>
-                      <option>Funcionário</option>
-                      <option>Interprete</option>
-                      <option>Gestor Departamento</option>
-                      <option>Audio Visual</option>
-                      <option>Usuario comum</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-
-              <div style="margin-top: 30px;"></div>
+              <div style="margin-top: 48px;"></div>
 
               <div class="form-group row">
                 <label for="password-confirm" class=" col-form-label text-md-right"></label>
-                <div class="col-md-3 ">
+                <div class="col-3 ">
                   <button type="submit" class="btn btn-info btn-user btn-block">
-                    {{ __('Register') }}
+                    {{ __('Enviar') }}
                   </button>
                 </div>
 
               </div>
-              <div style="margin-top: 27px;"></div>
+              <div style="margin-top: 48px;"></div>
 
 
 
@@ -120,6 +92,28 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const realFileBtn = document.getElementById("real-file");
+      const customBtn = document.getElementById("custom-button");
+      const customTxt = document.getElementById("custom-text");
+
+      customBtn.addEventListener("click", function() {
+        realFileBtn.click();
+      });
+
+      realFileBtn.addEventListener("change", function() {
+        if (realFileBtn.value) {
+          customTxt.innerHTML = realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+          )[1];
+        } else {
+          customTxt.innerHTML = "Nenhum arquivo escolhido, ainda.";
+        }
+      });
+    </script>
+
+
 
 
 
@@ -129,6 +123,5 @@
 
 </div>
 <!-- End of Main Content -->
-
 
 @endsection
