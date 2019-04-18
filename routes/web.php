@@ -23,13 +23,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/register', 'RegisterController@index')->middleware('guest')-> name('register');
+Route::get('/audiovisual', 'AudiovisualController@index')->middleware('auth')->name('audiovisual');
 
 Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
 
 // Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
 
-Route::get( '/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
+Route::get('/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
 
 Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->name('interprete');
 
@@ -47,10 +47,7 @@ Route::get('profile', function(){
 View::composer(['*'], function($view){
     
     $user = Auth::user();
-    $view->with('user',$user);
-    
-
-    
+    $view->with('user',$user); 
 
 });
 

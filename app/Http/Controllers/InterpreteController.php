@@ -28,6 +28,6 @@ class InterpreteController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('admin/interprete');
+        return view('interprete/interprete');
     }
 }
