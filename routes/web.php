@@ -36,8 +36,10 @@ Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->nam
 Route::get('/usuario', 'UsuarioController@index')->middleware('auth')->name('usuario');
 Route::post('/usuario/cadastrar', 'UsuarioController@cadastrar')->middleware('auth')->name('cadastrarUsuario');
 
+// route::get('/biodata', 'BiodataController@index')->middleware('auth')->name('biodata');
+route::resource('biodata', 'BiodataController');
 
-Route::resource('category','CategoryController');
+// Route::resource('category','CategoryController');
 
 Route::get('profile', function(){
     return view('profile');

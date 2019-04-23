@@ -9,7 +9,7 @@
   <!-- Begin Page Content -->
   <div class="container-fluid">
 
-    <style>
+    <!-- <style>
       #custom-button {
         padding: 6px;
         color: white;
@@ -28,7 +28,7 @@
         font-family: sans-serif;
         color: #aaa;
       }
-    </style>
+    </style> -->
 
     <div style="margin-top: 20px;"></div>
 
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="col-12">
 
       <div class="card col-12">
 

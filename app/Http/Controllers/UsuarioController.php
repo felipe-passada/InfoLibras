@@ -49,6 +49,8 @@ class UsuarioController extends Controller
         $usuario->password = bcrypt($request->input('formPassword'));
         $usuario->user_type = $request->input('formUserType');
         $usuario->save();
+        // return redirect()->route('admin.admin')
+        //     ->with('success', 'Cadastro atualizado com sucesso');
     }
     
 }
