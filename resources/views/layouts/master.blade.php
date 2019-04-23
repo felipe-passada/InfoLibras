@@ -16,13 +16,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <link href="{{asset('css/app.css')}}" rel="stylesheet">
+
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
 
 </head>
 
@@ -172,6 +173,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
 
         <li class="nav-item" data-widget="tree">
+
           @can('isAdmin')
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -202,43 +204,20 @@
           </div>
           @endcan
 
-          @can('isServidor')
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Configurações</span>
-          </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Configurações:</h6>
+          @can('isAdmin')
 
-              @if (Route::has('qrcode'))
-              <a class="collapse-item" href="{{ route('qrcode') }}">
-                <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-                <span>QR Code</span>
-              </a>
-              @endif
-            </div>
-          </div>
-
-          @if (Route::has('solicitacao'))
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('solicitacao') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Solicitação</span></a>
+          <a class="nav-link" href="{{ url('biodata') }}">
+            <i class="fas fa-table"></i>
+            <span>Bio Data</span>
+          </a>
         </li>
-        @endif
+
+
         @endcan
 
-        @can('isInterprete')
-        @if (Route::has('interprete'))
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('interprete') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Vídeo</span>
-          </a>
-        </li>
-        @endif
-        <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        @can('isServidor')
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Configurações</span>
         </a>
@@ -246,13 +225,33 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Configurações:</h6>
 
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-sign-language" aria-hidden="true"></i>
-              <span>Intérprete</span>
+            @if (Route::has('qrcode'))
+            <a class="collapse-item" href="{{ route('qrcode') }}">
+              <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
+              <span>QR Code</span>
             </a>
-
+            @endif
           </div>
-        </div> -->
+        </div>
+
+          @if (Route::has('solicitacao'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('solicitacao') }}">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Solicitação</span></a>
+          </li>
+          @endif
+        @endcan
+
+        @can('isInterprete')
+          @if (Route::has('interprete'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('interprete') }}">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Vídeo</span>
+            </a>
+          </li>
+          @endif
         @endcan
 
         @can('isGestordepartemento')
@@ -292,21 +291,6 @@
           </a>
         </li>
         @endif
-        <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Configurações</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Configurações:</h6>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
-              <span>Usuário</span>
-            </a>
-
-          </div>
-        </div> -->
         @endcan
 
         @can('isUser')
@@ -369,26 +353,12 @@
 
     </div>
 
-
+    <!-- <script src="{{ mix('js/app.js') }}"></script> -->
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
+    
 </body>
 
 </html>

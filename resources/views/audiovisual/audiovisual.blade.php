@@ -39,7 +39,7 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="col-12">
 
       <div class="card col-12">
 
@@ -49,7 +49,7 @@
             <h6 class="heading-small text-muted mb-4">Cadastro</h6>
             <div class="pl-lg-4">
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Titulo</label>
@@ -63,9 +63,9 @@
                   </div>
                 </div>
 
-              </div>
+              </div> -->
 
-              <div style="margin-top: 40px;"></div>
+              <div style="margin-top: 60px;"></div>
 
               <div class="">
                 <input type="file" id="real-file" hidden="hidden" />
@@ -73,7 +73,7 @@
                 <span id="custom-text">Nenhum arquivo escolhido, ainda.</span>
               </div>
 
-              <div style="margin-top: 48px;"></div>
+              <div style="margin-top: 60px;"></div>
 
               <div class="form-group row">
                 <label for="password-confirm" class=" col-form-label text-md-right"></label>
@@ -84,7 +84,7 @@
                 </div>
 
               </div>
-              <div style="margin-top: 48px;"></div>
+              <div style="margin-top: 80px;"></div>
 
 
 

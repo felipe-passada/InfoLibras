@@ -18,7 +18,7 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="col-12">
 
       <div class="card col-12">
 
