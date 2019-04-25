@@ -11,7 +11,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Edit de Bio Data</h1>
+      <h1 class="h3 mb-0 text-gray-800">EDIT DE USUARIO</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -27,7 +27,7 @@
 
           @if ($errors->any())
           <div class="alert alert-danger">
-            <strong>Whoops! </strong> there where some problems with your input.<br>
+            <strong>Ops! </strong> lá onde alguns problemas com sua entrada.<br>
             <ul>
               @foreach ($errors as $error)
               <li>{{$error}}</li>
@@ -36,7 +36,7 @@
           </div>
           @endif
 
-          <form action="{{route('biodata.update',$usuario->id)}}" method="post">
+          <form action="{{route('admin.update',$usuario->id)}}" method="post">
             @csrf
             @method('PUT')
             <div class="row">
@@ -68,9 +68,10 @@
               </div>
 
               <div class="col-md-12">
-                <a href="{{route('biodata.index')}}" class="btn btn-sm btn-success">Back</a>
-                <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                <a href="{{route('admin.index')}}" class="btn btn-sm btn-success">De volta</a>
+                <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
               </div>
+              
             </div>
           </form>
         </div>
@@ -78,5 +79,5 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
 @endsection

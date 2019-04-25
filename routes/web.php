@@ -33,11 +33,11 @@ Route::get('/solicitacao', 'SolicitacaoController@index')->middleware('auth')->n
 
 Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->name('interprete');
 
-Route::get('/usuario', 'UsuarioController@index')->middleware('auth')->name('usuario');
-Route::post('/usuario/cadastrar', 'UsuarioController@cadastrar')->middleware('auth')->name('cadastrarUsuario');
+// Route::get('/usuario', 'UsuarioController@index')->middleware('auth')->name('usuario');
+// Route::post('usuario', 'UsuarioController@cadastrar')->middleware('auth')->name('store');
 
 // route::get('/biodata', 'BiodataController@index')->middleware('auth')->name('biodata');
-route::resource('biodata', 'BiodataController');
+route::resource('admin', 'AdminController');
 
 // Route::resource('category','CategoryController');
 
