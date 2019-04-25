@@ -14,12 +14,9 @@
   <script src="{{ asset('js/app.js') }}" defer></script>
 
   <!-- Fonts -->
-  <link href="css/app.css" rel="stylesheet">
+  <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
 
 </head>
 

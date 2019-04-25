@@ -11,7 +11,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Detalhe de Bio Data</h1>
+      <h1 class="h3 mb-0 text-gray-800">DETALHE DE USUARIO</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-md-12">
-              <a href="{{route('biodata.index')}}" class="btn btn-sm btn-success">Back</a>
+              <a href="{{route('admin.index')}}" class="btn btn-sm btn-success">De volta</a>
             </div>
           </div>
         </div>
