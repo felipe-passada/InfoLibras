@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -20,6 +19,20 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
+        return view('auth/register');
+    }
 
     use RegistersUsers;
 
@@ -52,6 +65,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'user_type' => 'required|string|max:15',
         ]);
     }
 
@@ -62,11 +76,13 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   
+        // dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
+            'user_type' => $data['user_type'],
         ]);
     }
 }
