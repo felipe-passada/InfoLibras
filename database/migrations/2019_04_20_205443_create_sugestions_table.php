@@ -17,7 +17,7 @@ class CreateSugestionsTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->enum('status', ['hold','aproved','refused']);
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');

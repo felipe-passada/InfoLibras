@@ -19,10 +19,14 @@ class CreateQrCodesTable extends Migration
             $table->string('content');
             $table->string('path');
             $table->string('description');
-            $table->unsignedInteger('servidor_id');
+            $table->unsignedInteger('video');
+            $table->unsignedBigInteger('servidor_id');
             $table->foreign('servidor_id')
                 ->references('id')
                 ->on('users');
+            $table->foreign('video')
+                ->references('id')
+                ->on('videos');
             $table->timestamps();
         });
     }

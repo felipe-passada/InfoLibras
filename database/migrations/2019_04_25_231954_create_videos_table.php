@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->string('formato');
             $table->string('thumbnail');
             $table->string('path');
-            $table->unsignedInteger('audio_visual_id');
+            $table->unsignedBigInteger('audio_visual_id');
             $table->unsignedInteger('information_id');
             $table->foreign('audio_visual_id')
                 ->references('id')

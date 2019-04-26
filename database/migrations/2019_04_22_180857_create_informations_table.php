@@ -17,13 +17,13 @@ class CreateInformationsTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->unsignedInteger('sugestion_id');
-            $table->unsignedInteger('interpreter_id');
-            $table->foreign('sugestion_id')
-                ->references('id')
-                ->on('sugestions');
+            $table->unsignedBigInteger('interpreter_id');
             $table->foreign('interpreter_id')
                 ->references('id')
                 ->on('users');
+            $table->foreign('sugestion_id')
+                ->references('id')
+                ->on('sugestions');
             $table->timestamps();
         });
     }
