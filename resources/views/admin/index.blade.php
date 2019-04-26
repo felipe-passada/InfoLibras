@@ -15,7 +15,9 @@
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
     <div class="col-sm-2">
-      <a class="btn btn-sm btn-success" href="{{ route('admin.create') }}">Crie um novo usuario</a>
+      <a class="btn btn-sm btn-success" href="{{ route('admin.create') }}">
+        <i class="fas fa-plus"></i> Crie um novo usuario
+      </a>
     </div>
 
     <div class="col-12">
@@ -54,11 +56,17 @@
               <td>{{$usuario->user_type}}</td>
               <td>
                 <form action="{{ route('admin.destroy', $usuario->id) }}" method="post">
-                  <a class="btn btn-sm btn-success" href="{{route('admin.show',$usuario->id)}}">Exposição</a>
-                  <a class="btn btn-sm btn-warning" href="{{route('admin.edit',$usuario->id)}}">Editar</a>
+                  <a class="btn btn-sm btn-secondary" href="{{route('admin.show',$usuario->id)}}">
+                    <i class="fas fa-info-circle fa-sm" style="font-size: 14px;"></i>
+                  </a>
+                  <a class="btn btn-sm btn-primary" href="{{route('admin.edit',$usuario->id)}}">
+                    <i class="fas fa-edit fa-sm" style="font-size: 14px;"></i>
+                  </a>
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
+                  <button type=" submit" class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt fa-sm" style="font-size: 14px;"></i>
+                  </button>
                 </form>
               </td>
             </tr>
