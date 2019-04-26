@@ -26,4 +26,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $table = 'users';
+
+    public function video() { 
+        return $this->belongsTo(Video::Class);
+    }
+    public function sugestion() { 
+        return $this->belongsTo(Sugestion::Class);
+    }
+    public function information() { 
+        return $this->belongsTo(information::Class);
+    }
+    public function qrcode() { 
+        return $this->belongsTo(Qrcode::Class);
+    }
 }
