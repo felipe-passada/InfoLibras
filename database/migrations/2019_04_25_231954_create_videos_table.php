@@ -28,6 +28,7 @@ class CreateVideosTable extends Migration
                 ->references('id')
                 ->on('informations');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
