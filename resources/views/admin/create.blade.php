@@ -100,7 +100,6 @@
                                         <option name="tipo" value="interprete" type="interprete">Interprete</option>
                                         <option name="tipo" value="gestordepartemento" type="gestordepartemento">Gestor Departamento</option>
                                         <option name="tipo" value="audiovisual" type="audiovisual">Audio Visual</option>
-                                        <option name="tipo" value="user" type="user">Usuario comum</option>
                                     </select>
                                 </div>
                                 <div style="margin-top: 25px;"></div>
