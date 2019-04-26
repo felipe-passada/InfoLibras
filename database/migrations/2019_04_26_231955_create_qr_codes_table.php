@@ -28,6 +28,7 @@ class CreateQrCodesTable extends Migration
                 ->references('id')
                 ->on('videos');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
