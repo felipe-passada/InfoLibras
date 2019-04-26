@@ -25,6 +25,7 @@ class CreateInformationsTable extends Migration
                 ->references('id')
                 ->on('sugestions');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
