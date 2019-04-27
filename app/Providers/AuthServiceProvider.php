@@ -47,9 +47,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->user_type == 'audiovisual';
         });
 
-        $gate->define('isUser', function ($user) {
-            return $user->user_type == 'user';
-        });
+        // $gate->define('isUser', function ($user) {
+        //     return $user->user_type == 'user';
+        // });
 
     }
 }
