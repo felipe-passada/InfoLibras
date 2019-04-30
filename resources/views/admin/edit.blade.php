@@ -59,9 +59,8 @@
                     <option name="tipo" value="admin" type="admin">Administração</option>
                     <option name="tipo" value="servidor" type="servidor">Funcionário</option>
                     <option name="tipo" value="interprete" type="interprete">Interprete</option>
-                    <option name="tipo" value="gestordepartemento" type="gestordepartemento">Gestor Departamento</option>
-                    <option name="tipo" value="audiovisual" type="audiovisual">Audio Visual</option>
-                    <option name="tipo" value="user" type="user">Usuario comum</option>
+                    <option name="tipo" value="gestor_dpto" type="gestordepartemento">Gestor Departamento</option>
+                    <option name="tipo" value="audio_visual" type="audiovisual">Audio Visual</option>
                   </select>
                 </div>
                 <div style="margin-top: 25px;"></div>
@@ -71,7 +70,7 @@
                 <a href="{{route('admin.index')}}" class="btn btn-sm btn-success">De volta</a>
                 <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
               </div>
-              
+
             </div>
           </form>
         </div>
