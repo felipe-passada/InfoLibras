@@ -40,11 +40,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         $gate->define('isGestordepartemento', function ($user) {
-            return $user->user_type == 'gestordepartemento';
+            return $user->user_type == 'gestor_dpto';
         });
 
         $gate->define('isAudiovisual', function ($user) {
-            return $user->user_type == 'audiovisual';
+            return $user->user_type == 'audio_visual';
         });
 
         // $gate->define('isUser', function ($user) {
