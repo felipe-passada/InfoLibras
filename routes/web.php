@@ -41,6 +41,7 @@ route::resource('admin', 'AdminController');
 route::resource('solicitacao', 'SolicitacaoController');
 route::resource('sugestao', 'SugestaoController');
 route::resource('video', 'VideoInterpreteController');
+route::resource('video', 'VideoAudiovisualController');
 
 // Route::resource('category','CategoryController');
 

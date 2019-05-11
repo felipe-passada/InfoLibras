@@ -225,14 +225,14 @@
         @endcan
 
         @can('isInterprete')
-        
+
         <li class="nav-item">
           <a class="nav-link" href="{{ url('video') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Vídeo</span>
           </a>
         </li>
-        
+
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url('solicitacao') }}">
@@ -270,14 +270,14 @@
         @endcan
 
         @can('isAudiovisual')
-        @if (Route::has('audiovisual'))
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('audiovisual') }}">
+          <a class="nav-link" href="{{ url('video') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Vídeo</span>
           </a>
         </li>
-        @endif
+
         @endcan
 
         <!-- @can('isUser')

@@ -2,54 +2,47 @@
 
 @section('content')
 
-
-<!-- Main Content -->
 <div id="content">
 
   <!-- Begin Page Content -->
   <div class="container-fluid">
 
-    <style>
-      #custom-button {
-        padding: 6px;
-        color: white;
-        background-color: #148275;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 236px;
-      }
-
-      #custom-button:hover {
-        background-color: #22a393;
-      }
-
-      #custom-text {
-        margin-left: 10px;
-        font-family: sans-serif;
-        color: #aaa;
-      }
-    </style>
-
     <div style="margin-top: 20px;"></div>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">VÍDEO</h1>
+      <h1 class="h3 mb-0 text-gray-800">VIDEOS</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
+    <div class="col-sm-2">
+     
+    </div>
 
-    <!-- Content Row -->
     <div class="col-12">
 
-      <div class="card col-12">
+      <div style="margin-top: 30px;"></div>
 
-        <div class="card-body">
-          <form method="POST" action="{{ route('register') }}">
-            {{ csrf_field() }}
-            <h6 class="heading-small text-muted mb-4">Cadastro</h6>
+      <div class="card-body bg-white">
+
+        <div class="pl-lg-2">
+
+          <div style="margin-top: 20px;"></div>
+
+
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{$message}}</p>
+          </div>
+          @endif
+
+          <div style="margin-top: 30px;"></div>
+
+          <form action="{{route('video.store')}}" method="post">
+            @csrf
+            
             <div class="pl-lg-4">
 
-              <!-- <div class="row">
+              <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Titulo</label>
@@ -63,9 +56,9 @@
                   </div>
                 </div>
 
-              </div> -->
+              </div>
 
-              <div style="margin-top: 60px;"></div>
+              <div style="margin-top: 40px;"></div>
 
               <div class="">
                 <input type="file" id="real-file" hidden="hidden" />
@@ -73,25 +66,24 @@
                 <span id="custom-text">Nenhum arquivo escolhido, ainda.</span>
               </div>
 
-              <div style="margin-top: 60px;"></div>
+              <div style="margin-top: 48px;"></div>
 
-              <div class="form-group row">
-                <label for="password-confirm" class=" col-form-label text-md-right"></label>
-                <div class="col-3 ">
-                  <button type="submit" class="btn btn-info btn-user btn-block">
-                    {{ __('Enviar') }}
-                  </button>
+
+
+              <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
                 </div>
-
               </div>
-              <div style="margin-top: 80px;"></div>
-
-
-
           </form>
+
+          
         </div>
+
+        <div style="margin-top: 30px;"></div>
       </div>
     </div>
+    <div style="margin-top: 90px;"></div>
 
     <script>
       const realFileBtn = document.getElementById("real-file");
@@ -113,15 +105,8 @@
       });
     </script>
 
-
-
-
-
-
   </div>
-  <!-- /.container-fluid -->
-
 </div>
-<!-- End of Main Content -->
+
 
 @endsection
