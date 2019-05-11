@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sugestion extends Model
 {
@@ -17,4 +18,7 @@ class Sugestion extends Model
     public function information() {
         return $this->belongsTo(Information::Class);
     }
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 }

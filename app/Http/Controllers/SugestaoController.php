@@ -1,11 +1,10 @@
 <?php
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Model\Information;
+use App\Model\Sugestion;
 use Gate;
 
-class SolicitacaoController extends Controller
+class SugestaoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +13,12 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $informations = Information::latest()->paginate(6);
-        return view('interprete.indexinformacoes', compact('informations'))
+        $sugestions = Sugestion::latest()->paginate(6);
+        return view('funcionario.indexsugestao', compact('sugestions'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -31,11 +30,11 @@ class SolicitacaoController extends Controller
     public function create()
     {
 
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('interprete.createinformacoes');
+        return view('funcionario.createsugestao');
     }
 
     /**
@@ -46,19 +45,18 @@ class SolicitacaoController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = new Information();
-        $information->description = $request->input('textareaDescricao');
-        $information->interpreter_id = $request->user()->id;
-        $information->sugestion_id = $request->user()->id;
-        $information->save();
+        $sugestion = new Sugestion();
+        $sugestion->description = $request->input('textareaDescricao');
+        $sugestion->user_id = $request->user()->id;
+        $sugestion->save();
 
         // User::create($request->all());
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'Novo solicitação criado com sucesso');
+        return redirect()->route('sugestao.index')
+            ->with('success', 'Novo sugestão criado com sucesso');
     }
 
 
@@ -70,12 +68,12 @@ class SolicitacaoController extends Controller
      */
     public function show($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        return view('interprete.detail', compact('sugestion'));
+        $sugestion = Sugestion::find($id);
+        return view('funcionario.detail', compact('sugestion'));
     }
 
     /**
@@ -86,12 +84,12 @@ class SolicitacaoController extends Controller
      */
     public function edit($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        return view('interprete.edit', compact('sugestion'));
+        $sugestion = Sugestion::find($id);
+        return view('funcionario.edit', compact('sugestion'));
     }
 
     /**
@@ -104,17 +102,17 @@ class SolicitacaoController extends Controller
     public function update(Request $request, $id)
     {
 
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->name = $request->get('');
-        $information->email = $request->get('');
-        $information->user_type = $request->input('');
-        $information->save();
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'O solicitação atualizado com sucesso');
+        $sugestion = Sugestion::find($id);
+        $sugestion->name = $request->get('');
+        $sugestion->email = $request->get('');
+        $sugestion->user_type = $request->input('');
+        $sugestion->save();
+        return redirect()->route('sugestao.index')
+            ->with('success', 'O sugestão atualizado com sucesso');
     }
 
     /**
@@ -125,14 +123,13 @@ class SolicitacaoController extends Controller
      */
     public function destroy($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->delete();
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'O solicitação excluído com sucesso');
+        $sugestion = Sugestion::find($id);
+        $sugestion->delete();
+        return redirect()->route('sugestao.index')
+            ->with('success', 'O sugestão excluído com sucesso');
     }
 }
-

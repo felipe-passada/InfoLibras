@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Gate;
+
 class AdminController extends Controller
 {
     /**
@@ -28,6 +29,10 @@ class AdminController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         return view('admin.create');
     }
 
@@ -45,6 +50,10 @@ class AdminController extends Controller
         //     'formPassword' => 'required|string|min:6|confirmed',
         //     'formUserType' => 'required',
         // ]);
+
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
 
         $usuario = new User();
         $usuario->name = $request->input('formNome');
@@ -66,6 +75,10 @@ class AdminController extends Controller
      */
     public function show($id)
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         $usuario = User::find($id);
         return view('admin.detail', compact('usuario'));
     }
@@ -78,6 +91,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         $usuario = User::find($id);
         return view('admin.edit', compact('usuario'));
     }
@@ -91,14 +108,17 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
 
-      $usuario = User::find($id);
-      $usuario->name = $request->get('formName');
-      $usuario->email = $request->get('formEmail');
-      $usuario->user_type = $request->input('formUserType');
-      $usuario->save();
-      return redirect()->route('admin.index')
-                      ->with('success', 'O usuário atualizado com sucesso');
+        $usuario = User::find($id);
+        $usuario->name = $request->get('formName');
+        $usuario->email = $request->get('formEmail');
+        $usuario->user_type = $request->input('formUserType');
+        $usuario->save();
+        return redirect()->route('admin.index')
+                        ->with('success', 'O usuário atualizado com sucesso');
     }
 
     /**
@@ -109,6 +129,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
+        if (!Gate::allows('isAdmin')) {
+            abort(404, "Sorry, You can do this actions");
+        }
+
         $usuario = User::find($id);
         $usuario->delete();
         return redirect()->route('admin.index')

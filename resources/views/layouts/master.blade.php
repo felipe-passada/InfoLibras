@@ -215,24 +215,30 @@
             </div>
           </div>
 
-          @if (Route::has('solicitacao'))
+
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('solicitacao') }}">
+          <a class="nav-link" href="{{ url('sugestao') }}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Solicitação</span></a>
+            <span>Sugestão</span></a>
         </li>
-        @endif
+
         @endcan
 
         @can('isInterprete')
-        @if (Route::has('interprete'))
+        
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('interprete') }}">
+          <a class="nav-link" href="{{ url('video') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Vídeo</span>
           </a>
         </li>
-        @endif
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('solicitacao') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Solicitação</span></a>
+        </li>
         @endcan
 
         @can('isGestordepartemento')
