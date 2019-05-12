@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Qrcode extends Model
 {
@@ -10,4 +11,7 @@ class Qrcode extends Model
     public function users(){
         return $this->hasMany(User::Class);
     }
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 }

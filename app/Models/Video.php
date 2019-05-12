@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Video extends Model
 {
@@ -11,4 +12,7 @@ class Video extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 }

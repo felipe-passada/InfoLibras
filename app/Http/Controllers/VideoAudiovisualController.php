@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Information;
+use App\Model\Video;
 use Gate;
 
-class SolicitacaoController extends Controller
+class VideoAudiovisualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,12 @@ class SolicitacaoController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $informations = Information::latest()->paginate(6);
-        return view('interprete.indexinformacoes', compact('informations'))
+        $videos = Video::latest()->paginate(6);
+        return view('interprete.indexvideo', compact('videos'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -31,11 +31,11 @@ class SolicitacaoController extends Controller
     public function create()
     {
 
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('interprete.createinformacoes');
+        return view('interprete.createvideo');
     }
 
     /**
@@ -46,19 +46,19 @@ class SolicitacaoController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = new Information();
-        $information->description = $request->input('textareaDescricao');
-        $information->interpreter_id = $request->user()->id;
-        $information->sugestion_id = $request->user()->id;
-        $information->save();
+        $video = new Video();
+        $video->description = $request->input('textareaDescricao');
+        $video->interpreter_id = $request->user()->id;
+        $video->sugestion_id = $request->user()->id;
+        $video->save();
 
         // User::create($request->all());
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'Novo solicitação criado com sucesso');
+        return redirect()->route('video.index')
+            ->with('success', 'Novo video criado com sucesso');
     }
 
 
@@ -70,12 +70,12 @@ class SolicitacaoController extends Controller
      */
     public function show($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        return view('interprete.detail', compact('sugestion'));
+        $video = Video::find($id);
+        return view('interprete.detail', compact('video'));
     }
 
     /**
@@ -86,12 +86,12 @@ class SolicitacaoController extends Controller
      */
     public function edit($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        return view('interprete.edit', compact('sugestion'));
+        $video = Video::find($id);
+        return view('interprete.edit', compact('video'));
     }
 
     /**
@@ -104,17 +104,17 @@ class SolicitacaoController extends Controller
     public function update(Request $request, $id)
     {
 
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->name = $request->get('');
-        $information->email = $request->get('');
-        $information->user_type = $request->input('');
-        $information->save();
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'O solicitação atualizado com sucesso');
+        $video = Video::find($id);
+        $video->name = $request->get('');
+        $video->email = $request->get('');
+        $video->user_type = $request->input('');
+        $video->save();
+        return redirect()->route('video.index')
+            ->with('success', 'O video atualizado com sucesso');
     }
 
     /**
@@ -125,14 +125,14 @@ class SolicitacaoController extends Controller
      */
     public function destroy($id)
     {
-        if (!Gate::allows('isInterprete')) {
+        if (!Gate::allows('isAudiovisual')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->delete();
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'O solicitação excluído com sucesso');
+        $video = Video::find($id);
+        $video->delete();
+        return redirect()->route('video.index')
+            ->with('success', 'O video excluído com sucesso');
     }
 }
 

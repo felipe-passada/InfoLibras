@@ -29,15 +29,19 @@ Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcod
 
 // Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
 
-Route::get('/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
+// Route::get('/solicitacao', 'SolicitacaoController@index')->middleware('auth')->name('solicitacao');
 
-Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->name('interprete');
+// Route::get('/interprete', 'InterpreteController@index')->middleware('auth')->name('interprete');
 
 // Route::get('/usuario', 'UsuarioController@index')->middleware('auth')->name('usuario');
 // Route::post('usuario', 'UsuarioController@cadastrar')->middleware('auth')->name('store');
 
 // route::get('/biodata', 'BiodataController@index')->middleware('auth')->name('biodata');
 route::resource('admin', 'AdminController');
+route::resource('solicitacao', 'SolicitacaoController');
+route::resource('sugestao', 'SugestaoController');
+route::resource('video', 'VideoInterpreteController');
+route::resource('video', 'VideoAudiovisualController');
 
 // Route::resource('category','CategoryController');
 
