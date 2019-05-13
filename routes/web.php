@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/audiovisual', 'AudiovisualController@index')->middleware('auth')->name('audiovisual');
+// Route::get('/audiovisual', 'AudiovisualController@index')->middleware('auth')->name('audiovisual');
 
 Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
 
@@ -42,6 +42,7 @@ route::resource('solicitacao', 'SolicitacaoController');
 route::resource('sugestao', 'SugestaoController');
 route::resource('video', 'VideoInterpreteController');
 route::resource('video', 'VideoAudiovisualController');
+route::resource('aprovar', 'AprovarGestordepartamentoController');
 
 // Route::resource('category','CategoryController');
 
