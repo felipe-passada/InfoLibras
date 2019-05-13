@@ -242,31 +242,12 @@
         @endcan
 
         @can('isGestordepartemento')
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Configurações</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Configurações:</h6>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
-              <span>Usuário</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-              <span>QR Code</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-sign-language" aria-hidden="true"></i>
-              <span>Intérprete</span>
-            </a>
-
-          </div>
-        </div>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('aprovar') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Aprovar sugestões</span>
+          </a>
+        </li>
         @endcan
 
         @can('isAudiovisual')

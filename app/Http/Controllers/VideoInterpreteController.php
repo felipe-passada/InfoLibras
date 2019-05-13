@@ -55,6 +55,21 @@ class VideoInterpreteController extends Controller
         $video->interpreter_id = $request->user()->id;
         $video->sugestion_id = $request->user()->id;
         $video->save();
+        
+        var_dump($_FILES);
+        var_dump(Input::file('video'));
+        dd(Input::all());
+        $filename = $file->getClientOriginalName();
+        $path = public_path() . '/uploads/';
+        return $file->move($path, $filename);
+
+        $request = $this->saveFiles($request);
+        $video = Video::create($request->all());
+        foreach ($request->input('video_id', []) as $index => $id) {
+            $model = config('medialibrary.media_model');
+            $file = $model::find($id);
+            $file->model_id = $video->id;
+            $file->save();
 
         // User::create($request->all());
         return redirect()->route('video.index')
