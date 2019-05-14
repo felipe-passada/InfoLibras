@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-10">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-username">Conteúdo</label>
                                         <input id="conteudo" name="formConteudo" type="text" class="form-control{{ $errors->has('conteudo') ? ' is-invalid' : '' }}" name="conteudo" required>
