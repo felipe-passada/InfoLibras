@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Qrcode extends Model
 {
-    protected $table = 'qrcodes';
+    protected $table = 'qr_codes';
     public function users(){
         return $this->hasMany(User::Class);
     }

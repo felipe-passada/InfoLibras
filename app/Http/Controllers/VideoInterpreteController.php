@@ -8,7 +8,7 @@ use Gate;
 class VideoInterpreteController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -55,24 +55,9 @@ class VideoInterpreteController extends Controller
         $video->interpreter_id = $request->user()->id;
         $video->sugestion_id = $request->user()->id;
         $video->save();
-        
-        var_dump($_FILES);
-        var_dump(Input::file('video'));
-        dd(Input::all());
-        $filename = $file->getClientOriginalName();
-        $path = public_path() . '/uploads/';
-        return $file->move($path, $filename);
-
-        $request = $this->saveFiles($request);
-        $video = Video::create($request->all());
-        foreach ($request->input('video_id', []) as $index => $id) {
-            $model = config('medialibrary.media_model');
-            $file = $model::find($id);
-            $file->model_id = $video->id;
-            $file->save();
 
         // User::create($request->all());
-        return redirect()->route('video.index')
+        return redirect()->route('videos.index')
             ->with('success', 'Novo video criado com sucesso');
     }
 
@@ -90,7 +75,7 @@ class VideoInterpreteController extends Controller
         }
 
         $video = Video::find($id);
-        return view('interprete.detail', compact('video'));
+        return view('interprete.detail', compact('videos'));
     }
 
     /**
@@ -106,7 +91,7 @@ class VideoInterpreteController extends Controller
         }
 
         $video = Video::find($id);
-        return view('interprete.edit', compact('video'));
+        return view('interprete.edit', compact('videos'));
     }
 
     /**
@@ -128,7 +113,7 @@ class VideoInterpreteController extends Controller
         $video->email = $request->get('');
         $video->user_type = $request->input('');
         $video->save();
-        return redirect()->route('video.index')
+        return redirect()->route('videos.index')
             ->with('success', 'O video atualizado com sucesso');
     }
 
@@ -146,7 +131,7 @@ class VideoInterpreteController extends Controller
 
         $video = Video::find($id);
         $video->delete();
-        return redirect()->route('video.index')
+        return redirect()->route('videos.index')
             ->with('success', 'O video excluído com sucesso');
     }
 }

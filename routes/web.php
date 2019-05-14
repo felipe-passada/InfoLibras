@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/audiovisual', 'AudiovisualController@index')->middleware('auth')->name('audiovisual');
 
-Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
+// Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcode');
 
 // Route::get('/qrcode', 'QrCodeFunController@index')->middleware('auth')->name('qrcode');
 
@@ -40,9 +40,10 @@ Route::get('/qrcode', 'QrCodeController@index')->middleware('auth')->name('qrcod
 route::resource('admin', 'AdminController');
 route::resource('solicitacao', 'SolicitacaoController');
 route::resource('sugestao', 'SugestaoController');
-route::resource('video', 'VideoInterpreteController');
+route::resource('videos', 'VideoInterpreteController');
 route::resource('video', 'VideoAudiovisualController');
 route::resource('aprovar', 'AprovarGestordepartamentoController');
+route::resource('qrcode', 'QrCodeController');
 
 // Route::resource('category','CategoryController');
 
