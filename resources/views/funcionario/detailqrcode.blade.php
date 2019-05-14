@@ -11,7 +11,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">DETALHE DE USUARIO</h1>
+      <h1 class="h3 mb-0 text-gray-800">DETALHE DE QR CODE</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
 
@@ -28,26 +28,29 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <strong>Nome : </strong> {{$usuario->name}}
+                <strong>Titulo : </strong> {{$qrcode->title}}
                 <div style="margin-top: 20px;"></div>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <strong>Email : </strong> {{$usuario->email}}
+                <strong>Conteúdo : </strong> {{$qrcode->content}}
                 <div style="margin-top: 20px;"></div>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <strong>Tipos : </strong> {{$usuario->user_type}}
+                <strong>Descrição : </strong>
+                <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control">
+                {{$qrcode->description}}
+                </textarea>
                 <div style="margin-top: 20px;"></div>
               </div>
               <div style="margin-top: 25px;"></div>
             </div>
 
             <div class="col-md-12">
-              <a href="{{route('admin.index')}}" class="btn btn-sm btn-success">De volta</a>
+              <a href="{{route('qrcode.index')}}" class="btn btn-sm btn-success">De volta</a>
             </div>
           </div>
         </div>
