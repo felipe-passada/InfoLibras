@@ -19,7 +19,7 @@ class VideoAudiovisualController extends Controller
         }
 
         $videos = Video::latest()->paginate(6);
-        return view('interprete.indexvideo', compact('videos'))
+        return view('audiovisual.indexvideo', compact('videos'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -35,7 +35,7 @@ class VideoAudiovisualController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('interprete.createvideo');
+        return view('audiovisual.createvideo');
     }
 
     /**
@@ -75,7 +75,7 @@ class VideoAudiovisualController extends Controller
         }
 
         $video = Video::find($id);
-        return view('interprete.detail', compact('video'));
+        return view('audiovisual.detail', compact('video'));
     }
 
     /**
@@ -91,7 +91,7 @@ class VideoAudiovisualController extends Controller
         }
 
         $video = Video::find($id);
-        return view('interprete.edit', compact('video'));
+        return view('audiovisual.edit', compact('video'));
     }
 
     /**

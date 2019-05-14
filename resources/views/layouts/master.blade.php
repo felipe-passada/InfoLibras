@@ -206,12 +206,12 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Configurações:</h6>
 
-              @if (Route::has('qrcode'))
-              <a class="collapse-item" href="{{ route('qrcode') }}">
+
+              <a class="collapse-item" href="{{ url('qrcode') }}">
                 <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
                 <span>QR Code</span>
               </a>
-              @endif
+
             </div>
           </div>
 
@@ -227,7 +227,7 @@
         @can('isInterprete')
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('video') }}">
+          <a class="nav-link" href="{{ url('videos') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Vídeo</span>
           </a>
