@@ -42,13 +42,13 @@
             <div class="row">
               <div class="col-md-12">
                 <strong>Titulo :</strong>
-                <input type="text" name="formTitulo" class="form-control" value="{{$qrcode->name}}">
+                <input type="text" name="formTitulo" class="form-control" value="{{$qrcode->title}}">
                 <div style="margin-top: 15px;"></div>
               </div>
 
               <div class="col-md-12">
                 <strong>Conteúdo :</strong>
-                <input type="text" name="formConteudo" class="form-control" value="{{$qrcode->email}}">
+                <input type="text" name="formConteudo" class="form-control" value="{{$qrcode->content}}">
                 <div style="margin-top: 15px;"></div>
               </div>
 
