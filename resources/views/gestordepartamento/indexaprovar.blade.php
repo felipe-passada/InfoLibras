@@ -36,16 +36,18 @@
 
           <table class="table table-hover table-sm">
             <tr>
-              <th width="50px"><b>No.</b></th>
-              <th width="230px">Nome</th>
+              <th width="50px"><b>#</b></th>
+              <th width="230px">Usuario</th>
+              <th width="230px">Sugestao</th>
               <th>Status</th>
               <th width="200px">Ação</th>
             </tr>
 
             @foreach ($sugestions as $sugestion)
             <tr>
-              <td><b>{{++$i}}.</b></td>
-              <td>{{$sugestion->user_name}}</td>
+              <td>{{$sugestion->id}}</td>
+              <td>{{$sugestion->name}}</td>
+              <td>{{$sugestion->description}}</td>
               <td>{{$sugestion->status}}</td>
 
               <td>
@@ -66,8 +68,6 @@
             </tr>
             @endforeach
           </table>
-
-          {!! $sugestions->links() !!}
         </div>
 
         <div style="margin-top: 30px;"></div>

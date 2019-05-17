@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Sugestion;
 use Gate;
+use Illuminate\Support\Facades\DB;
 
 class AprovarGestordepartamentoController extends Controller
 {
@@ -17,9 +18,15 @@ class AprovarGestordepartamentoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $sugestions = Sugestion::latest()->paginate(6);
-        return view('gestordepartamento.indexaprovar', compact('sugestions'))
-            ->with('i', (request()->input('page', 1) - 1) * 6);
+        // $sugestions = Sugestion::latest()->paginate(6);
+        $sugestions = DB::table('sugestions')
+            ->join('users', 'user_id', '=', 'users.id')
+            ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
+            ->get();
+
+            // return \response()->json($sugestions);
+
+        return view('gestordepartamento.indexaprovar', compact('sugestions'));
     }
 
     /**
