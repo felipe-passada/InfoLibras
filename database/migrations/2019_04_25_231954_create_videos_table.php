@@ -20,13 +20,13 @@ class CreateVideosTable extends Migration
             $table->string('thumbnail');
             $table->string('path');
             $table->unsignedBigInteger('audio_visual_id');
-            $table->unsignedInteger('information_id');
+            $table->unsignedInteger('solicitation_id');
             $table->foreign('audio_visual_id')
                 ->references('id')
                 ->on('users');
-            $table->foreign('information_id')
+            $table->foreign('solicitation_id')
                 ->references('id')
-                ->on('informations');
+                ->on('solicitations');
             $table->timestamps();
             $table->softDeletes();
         });
