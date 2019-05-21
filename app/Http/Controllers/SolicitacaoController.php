@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Information;
+use App\Model\Solicitation;
 use Gate;
 
 class SolicitacaoController extends Controller
@@ -18,8 +18,8 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $informations = Information::latest()->paginate(6);
-        return view('interprete.indexinformacoes', compact('informations'))
+        $solicitations = Solicitation::latest()->paginate(6);
+        return view('interprete.indexsolicitation', compact('solicitations'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -35,7 +35,7 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('interprete.createinformacoes');
+        return view('interprete.createsolicitation');
     }
 
     /**
@@ -50,11 +50,11 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = new Information();
-        $information->description = $request->input('textareaDescricao');
-        $information->interpreter_id = $request->user()->id;
-        $information->sugestion_id = $request->user()->id;
-        $information->save();
+        $solicitation = new Solicitation();
+        $solicitation->description = $request->input('textareaDescricao');
+        $solicitation->interpreter_id = $request->user()->id;
+        $solicitation->sugestion_id = $request->user()->id;
+        $solicitation->save();
 
         // User::create($request->all());
         return redirect()->route('solicitacao.index')
@@ -74,7 +74,7 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
+        $solicitation = Solicitation::find($id);
         return view('interprete.detail', compact('sugestion'));
     }
 
@@ -90,7 +90,7 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
+        $solicitation = Solicitation::find($id);
         return view('interprete.edit', compact('sugestion'));
     }
 
@@ -108,11 +108,11 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->name = $request->get('');
-        $information->email = $request->get('');
-        $information->user_type = $request->input('');
-        $information->save();
+        $solicitation = Solicitation::find($id);
+        $solicitation->name = $request->get('');
+        $solicitation->email = $request->get('');
+        $solicitation->user_type = $request->input('');
+        $solicitation->save();
         return redirect()->route('solicitacao.index')
             ->with('success', 'O solicitação atualizado com sucesso');
     }
@@ -129,8 +129,8 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $information = Information::find($id);
-        $information->delete();
+        $solicitation = Solicitation::find($id);
+        $solicitation->delete();
         return redirect()->route('solicitacao.index')
             ->with('success', 'O solicitação excluído com sucesso');
     }

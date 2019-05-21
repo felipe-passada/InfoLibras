@@ -79,6 +79,11 @@ class AprovarGestordepartamentoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
+        // $sugestion = DB::table('sugestions')
+        //     ->join('users', 'user_id', '=', 'users.id')
+        //     ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
+        //     ->get();
+
         $sugestion = Sugestion::find($id);
         return view('gestordepartamento.detailaprovar', compact('sugestion'));
     }
@@ -95,7 +100,16 @@ class AprovarGestordepartamentoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
+        // $id = $request->input('id');
+        // $sugestion = DB::table('sugestions')
+        //     ->join('users', function($join){
+        //         $join->on( 'user_id', '=', 'users.id')
+        //         ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
+        //         ->where( 'sugestions.id','=', $id);
+        //     })
+        //     ->get();
         $sugestion = Sugestion::find($id);
+        //return response()->json($sugestion);
         return view('gestordepartamento.editaprovar', compact('sugestion'));
     }
 

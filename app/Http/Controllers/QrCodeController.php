@@ -2,8 +2,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Qrcode;
 use Gate;
+use Illuminate\Support\Str;
+
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Model\QrCodeModel;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class QrCodeController extends Controller
 {
@@ -18,7 +24,7 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcodes = Qrcode::latest()->paginate(6);
+        $qrcodes = QrCodeModel::latest()->paginate(6);
         return view('funcionario.indexqrcode', compact('qrcodes'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
@@ -38,6 +44,23 @@ class QrCodeController extends Controller
         return view('funcionario.createqrcode');
     }
 
+    public function __construct(QrcodeModel $qrcodeModel)
+    {
+        $this->model = $qrcodeModel;
+    }
+
+    public function getAll()
+    {
+        $qrcodeModel = $this->model->all();
+        return response()->json($qrcodeModel);
+    }
+
+    public function get($id)
+    {
+        $qrcodeModel = $this->model->find($id);
+        return response()->json($qrcodeModel);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,15 +73,31 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = new Qrcode();
-        $qrcode->title = $request->input('formTitulo');
-        $qrcode->content = $request->input('formConteudo');
-        $qrcode->description = $request->input('textareaDescricao');
-        $qrcode->save();
+        // $qrcode = new Qrcode();
+        // $qrcode->title = $request->input('formTitulo');
+        // $qrcode->content = $request->input('formConteudo');
+        // $qrcode->description = $request->input('textareaDescricao');
+        // $qrcode->save();
+
+        $data = [
+            'title' => $title = $request->input('formTitulo'),
+            'content' => $content = $request->input('formConteudo'),
+            'path' => $path = public_path('storage/qrcode/' . Str::snake($title) . '.svg'),
+            'description' => $description = $request->input('textareaDescricao'),
+            'video' => $video = $request->user()->id,
+            'servidor_id' => $servidor_id = $request->user()->id
+        
+        ];
+
+        $qrcode = \QrCode::generate($content);
+        Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
+
+        $qrcodeModel = $this->model->create($data);
+        return response()->json($qrcodeModel);
 
         // User::create($request->all());
         return redirect()->route('qrcode.index')
-            ->with('success', 'Novo sugestão criado com sucesso');
+            ->with('success', 'Novo Qq code criado com sucesso');
     }
 
 
@@ -136,19 +175,7 @@ class QrCodeController extends Controller
             ->with('success', 'O qrcode excluído com sucesso');
     }
 
-    // public function __construct(QrcodeModel $qrcodeModel) {
-    //     $this->model = $qrcodeModel;
-    // }
-
-    // public function getAll() {
-    //     $qrcodeModel = $this->model->all();
-    //     return response()->json($qrcodeModel);
-    // }
-
-    // public function get($id) {
-    //     $qrcodeModel = $this->model->find($id);
-    //     return response()->json($qrcodeModel);
-    // }
+    
 
     // public function store(Request $request) {
     //     $data = [

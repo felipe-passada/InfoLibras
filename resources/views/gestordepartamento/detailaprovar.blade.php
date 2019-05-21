@@ -28,7 +28,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <strong>Nome : </strong> {{$sugestion->user_id}}
+                <strong>Nome : </strong> {{$sugestion->name}}
                 <div style="margin-top: 20px;"></div>
               </div>
             </div>
