@@ -10,7 +10,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">CRIA UM DE QR CODE</h1>
+            <h1 class="h3 mb-0 text-gray-800">Gerar QRCode</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
 
@@ -40,10 +40,10 @@
                         <div class="pl-lg-4">
 
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-username">Titulo</label>
-                                        <input id="titulo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="formTitulo" value="{{ old('titulo') }}" required autofocus>
+                                        <label class="form-control-label" for="input-username">Titulo do Video</label>
+                                        <input id="titulo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" class="form-control-label" id="titulo" name="titulo" value="{{ old('titulo') }}" required autofocus>
 
                                         @if ($errors->has('titulo'))
                                         <span class="invalid-feedback" role="alert">
@@ -56,7 +56,30 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-10">
+                                <div class="col-6">
+                                    <div class="form-group">
+
+                                        <label class="form-control-label" for="input-username">Video</label>
+                                        
+                                        <select class="custom-select" name="video" id="video">
+                                            <option selected>Selecione o video</option>
+                                            <option value="https://www.youtube.com/watch?v=WvQlhMjGo4M">BURACOS NEGROS, como eles surgem?</option>
+                                            <option value="https://www.youtube.com/watch?v=ZMKjm41mwJk">Astronomia: Nascimento, Vida e Morte das estrelas</option>
+                                            <option value="https://www.youtube.com/watch?v=NKMRtJYhZiU">Exploração do Sistema Solar 360: Parte VI - Marte</option>
+                                        </select>
+
+                                        @if ($errors->has('video'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('video') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-username">Conteúdo</label>
                                         <input id="conteudo" name="formConteudo" type="text" class="form-control{{ $errors->has('conteudo') ? ' is-invalid' : '' }}" name="conteudo" required>
@@ -72,10 +95,10 @@
 
                             <div class="row">
 
-                                <div class="col-10">
+                                <div class="col-6">
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea3">Descrição</label>
-                                        <textarea name="textareaDescricao" class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                                        <textarea name="descricao" class="form-control" id="descricao" rows="4"></textarea>
                                     </div>
                                 </div>
 
@@ -91,6 +114,8 @@
                                     <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
                                 </div>
                             </div>
+
+                            <input type="hidden" id="servidor" value="1">
 
                             <div style="margin-top: 27px;"></div>
                         </div>
