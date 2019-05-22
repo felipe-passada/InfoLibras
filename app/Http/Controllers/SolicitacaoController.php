@@ -75,7 +75,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitation = Solicitation::find($id);
-        return view('interprete.detail', compact('sugestion'));
+        return view('interprete.detailsolicitation', compact('solicitation'));
     }
 
     /**
@@ -91,7 +91,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitation = Solicitation::find($id);
-        return view('interprete.edit', compact('sugestion'));
+        return view('interprete.edit', compact('solicitation'));
     }
 
     /**

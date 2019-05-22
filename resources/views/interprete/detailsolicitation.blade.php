@@ -26,15 +26,17 @@
         <div class="pl-lg-3">
 
           <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <strong>Descrição : </strong>
-                <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control">
-                {{$solicitation->description}}
-                </textarea>
-                <div style="margin-top: 20px;"></div>
-              </div>
-              <div style="margin-top: 25px;"></div>
+            <div class="col-10">
+              <fieldset disabled>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea3"><strong>Description : </strong></label>
+                  <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control">
+                  {{$solicitation->description}}
+                  </textarea>
+                  <div style="margin-top: 20px;"></div>
+                </div>
+                <div style="margin-top: 25px;"></div>
+              </fieldset>
             </div>
 
             <div class="col-md-12">

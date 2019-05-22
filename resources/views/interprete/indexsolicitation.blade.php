@@ -53,9 +53,7 @@
                   <a class="btn btn-sm btn-secondary" href="{{route('solicitacao.show',$solicitation->id)}}">
                     <i class="fas fa-info-circle fa-sm" style="font-size: 14px;"></i>
                   </a>
-                  <a class="btn btn-sm btn-primary" href="{{route('solicitacao.edit',$solicitation->id)}}">
-                    <i class="fas fa-edit fa-sm" style="font-size: 14px;"></i>
-                  </a>
+
                   
                 </form>
               </td>
