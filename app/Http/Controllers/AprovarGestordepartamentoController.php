@@ -2,9 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Sugestion;
-use App\Model\Solicitation;
-use Illuminate\Support\Facades\DB;
 use Gate;
+use Illuminate\Support\Facades\DB;
 
 class AprovarGestordepartamentoController extends Controller
 {
@@ -129,14 +128,8 @@ class AprovarGestordepartamentoController extends Controller
         }
 
         $sugestion = Sugestion::find($id);
-        if($request->input('formStatus') == 'aproved') {
-            $sugestion->status = 'aproved';
-            $sugestion->save();
-            
-            $solicitacao = new SolicitacaoController;
-            $solicitacao->create($sugestion);
-        }
-        
+        $sugestion->status = $request->input('formStatus');
+        $sugestion->save();
         return redirect()->route('aprovar.index')
             ->with('success', 'O aprovar atualizado com sucesso');
     }

@@ -14,7 +14,6 @@
       <h1 class="h3 mb-0 text-gray-800">SOLICITAÇÃO</h1>
       <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
-
     <div class="col-12">
 
       <div style="margin-top: 30px;"></div>
@@ -53,7 +52,6 @@
                   <a class="btn btn-sm btn-secondary" href="{{route('solicitacao.show',$solicitation->id)}}">
                     <i class="fas fa-info-circle fa-sm" style="font-size: 14px;"></i>
                   </a>
-
 
                 </form>
               </td>

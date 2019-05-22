@@ -45,9 +45,9 @@
                 <div class="form-group">
                   <label class="form-control-label" for="input-last-name">Status</label>
                   <select class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" name="formStatus" required id="status" type="status">
-                    <option name="status" value="hold" type="hold">Em espera</option>
+                    <option name="status" value="hold" type="hold">Aguarde</option>
                     <option name="status" value="aproved" type="aproved">Aprovado</option>
-                    <option name="status" value="refused" type="refused">Negado</option>
+                    <option name="status" value="refused" type="refused">Recusou</option>
                   </select>
                 </div>
                 <div style="margin-top: 25px;"></div>
