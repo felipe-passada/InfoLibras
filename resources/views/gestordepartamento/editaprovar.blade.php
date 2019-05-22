@@ -41,14 +41,6 @@
             @method('PUT')
             <div class="row">
 
-
-              <div class="col-md-12">
-                <div class="form-group">
-                  <strong>Nome : </strong> {{$sugestion->name}}
-                  <div style="margin-top: 20px;"></div>
-                </div>
-              </div>
-
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label" for="input-last-name">Status</label>

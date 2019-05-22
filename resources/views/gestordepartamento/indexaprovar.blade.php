@@ -36,7 +36,7 @@
 
           <table class="table table-hover table-sm">
             <tr>
-              <th width="50px"><b>#</b></th>
+              <th width="50px" ><b>#</b></th>
               <th width="230px">Usuario</th>
               <th width="230px">Sugestao</th>
               <th>Status</th>
@@ -68,6 +68,7 @@
             </tr>
             @endforeach
           </table>
+          
         </div>
 
         <div style="margin-top: 30px;"></div>
