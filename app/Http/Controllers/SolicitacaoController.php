@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Sugestion;
 use App\Model\Solicitation;
 use Gate;
 
@@ -19,7 +20,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitations = Solicitation::latest()->paginate(6);
-        return view('interprete.indexsolicitation', compact('solicitations'))
+        return view('interprete.indexsolicitations', compact('solicitations'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -28,14 +29,19 @@ class SolicitacaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Sugestion $sugestion)
     {
 
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
+        // if (!Gate::allows('isInterprete')) {
+        //     abort(404, "Sorry, You can do this actions");
+        // }
+        $solicitation = new Solicitation();
 
-        return view('interprete.createsolicitation');
+        $solicitation->description = $sugestion->description;
+        $solicitation->sugestion_id = $sugestion->id;
+        $solicitation->save();
+
+        return "True";
     }
 
     /**
@@ -135,4 +141,3 @@ class SolicitacaoController extends Controller
             ->with('success', 'O solicitação excluído com sucesso');
     }
 }
-
