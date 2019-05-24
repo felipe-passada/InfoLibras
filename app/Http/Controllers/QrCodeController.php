@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Qrcode;
 use Gate;
+use Illuminate\Support\Facades\Storage;
 
 class QrCodeController extends Controller
 {
@@ -50,15 +51,29 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = new Qrcode();
-        $qrcode->title = $request->input('formTitulo');
-        $qrcode->content = $request->input('formConteudo');
-        $qrcode->description = $request->input('textareaDescricao');
-        $qrcode->save();
+        $data = $request->all();
 
-        // User::create($request->all());
-        return redirect()->route('qrcode.index')
-            ->with('success', 'Novo sugestão criado com sucesso');
+        $solicitation = new Solicitation();
+        $solicitation->title = $request->input('titulo');
+        $solicitation->content = $request->input('content');
+        $solicitation->path = $request->input('path');
+        $solicitation->description = $request->input('description');
+
+        $solicitation->save();
+
+        $data = [
+            'title' => $title = $request->input('titulo'),
+            'content' => $content = $request->input('content'),
+            'path' => $path = public_path('storage/qrcode/'. Str::snake($title) . '.svg'),
+            'description' => $description = $request->input('description')
+        ];
+        
+                $qrcode = \QrCode::generate($content);
+                Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
+        
+                $qrcodeModel = $this->model->create($data);
+
+        return response()->json($data);
     }
 
 
