@@ -32,12 +32,11 @@ class SolicitacaoController extends Controller
     public function create(Sugestion $sugestion)
     {
 
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
-        
-        $solicitation = new Solicitation();
+        // if (!Gate::allows('isInterprete')) {
+        //     abort(404, "Sorry, You can do this actions");
+        // }
 
+        $solicitation = new Solicitation();
         $solicitation->description = $sugestion->description;
         $solicitation->sugestion_id = $sugestion->id;
         $solicitation->save();
@@ -98,7 +97,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitation = Solicitation::find($id);
-        return view('interprete.edit', compact('solicitation'));
+        return view('interprete.solicitation', compact('solicitation'));
     }
 
     /**

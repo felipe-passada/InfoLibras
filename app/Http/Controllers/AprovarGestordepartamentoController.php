@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Model\Sugestion;
-use Gate;
+use App\Model\Solicitation;
 use Illuminate\Support\Facades\DB;
+use Gate;
 
 class AprovarGestordepartamentoController extends Controller
 {
@@ -24,7 +26,7 @@ class AprovarGestordepartamentoController extends Controller
             ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
             ->get();
 
-            // return \response()->json($sugestions);
+        // return \response()->json($sugestions);
 
         return view('gestordepartamento.indexaprovar', compact('sugestions'));
     }
@@ -79,11 +81,6 @@ class AprovarGestordepartamentoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        // $sugestion = DB::table('sugestions')
-        //     ->join('users', 'user_id', '=', 'users.id')
-        //     ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
-        //     ->get();
-
         $sugestion = Sugestion::find($id);
         return view('gestordepartamento.detailaprovar', compact('sugestion'));
     }
@@ -100,16 +97,7 @@ class AprovarGestordepartamentoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        // $id = $request->input('id');
-        // $sugestion = DB::table('sugestions')
-        //     ->join('users', function($join){
-        //         $join->on( 'user_id', '=', 'users.id')
-        //         ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
-        //         ->where( 'sugestions.id','=', $id);
-        //     })
-        //     ->get();
         $sugestion = Sugestion::find($id);
-        //return response()->json($sugestion);
         return view('gestordepartamento.editaprovar', compact('sugestion'));
     }
 
@@ -128,8 +116,19 @@ class AprovarGestordepartamentoController extends Controller
         }
 
         $sugestion = Sugestion::find($id);
-        $sugestion->status = $request->input('formStatus');
-        $sugestion->save();
+
+        if($sugestion->status = $request->input('formStatus')){
+            $sugestion->save();
+        } 
+
+        if ($request->input('formStatus') == 'aproved') {
+            $sugestion->status = 'aproved';
+            $sugestion->save();
+
+            $solicitacao = new SolicitacaoController;
+            $solicitacao->create($sugestion);
+        }
+
         return redirect()->route('aprovar.index')
             ->with('success', 'O aprovar atualizado com sucesso');
     }

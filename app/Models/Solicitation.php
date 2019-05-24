@@ -10,11 +10,13 @@ class Solicitation extends Model
     protected $table = 'solicitations';
 
     protected $guard = ['id', 'description'];
-    
-    public function sugestions() {
+
+    public function sugestions()
+    {
         return $this->hasMany(Sugestion::Class);
     }
-    public function video() {
+    public function video()
+    {
         return $this->belongsTo(Video::Class);
     }
 
