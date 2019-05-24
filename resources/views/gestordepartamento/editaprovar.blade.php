@@ -41,19 +41,11 @@
             @method('PUT')
             <div class="row">
 
-
-              <div class="col-md-12">
-                <div class="form-group">
-                  <strong>Nome : </strong> {{$sugestion->user_id}}
-                  <div style="margin-top: 20px;"></div>
-                </div>
-              </div>
-
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label" for="input-last-name">Status</label>
                   <select class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" name="formStatus" required id="status" type="status">
-                    <option name="status" value="hold" type="hold">Em espera</option>
+                    <option name="status">Status</option>
                     <option name="status" value="aproved" type="aproved">Aprovado</option>
                     <option name="status" value="refused" type="refused">Negado</option>
                   </select>

@@ -28,12 +28,6 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <strong>Nome : </strong> {{$sugestion->user_id}}
-                <div style="margin-top: 20px;"></div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
                 <strong>Status : </strong> {{$sugestion->status}}
                 <div style="margin-top: 20px;"></div>
               </div>

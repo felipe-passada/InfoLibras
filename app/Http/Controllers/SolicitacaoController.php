@@ -20,7 +20,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitations = Solicitation::latest()->paginate(6);
-        return view('interprete.indexsolicitations', compact('solicitations'))
+        return view('interprete.indexsolicitation', compact('solicitations'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -35,8 +35,8 @@ class SolicitacaoController extends Controller
         // if (!Gate::allows('isInterprete')) {
         //     abort(404, "Sorry, You can do this actions");
         // }
-        $solicitation = new Solicitation();
 
+        $solicitation = new Solicitation();
         $solicitation->description = $sugestion->description;
         $solicitation->sugestion_id = $sugestion->id;
         $solicitation->save();
@@ -81,7 +81,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitation = Solicitation::find($id);
-        return view('interprete.detail', compact('sugestion'));
+        return view('interprete.detailsolicitation', compact('solicitation'));
     }
 
     /**
@@ -97,7 +97,7 @@ class SolicitacaoController extends Controller
         }
 
         $solicitation = Solicitation::find($id);
-        return view('interprete.edit', compact('sugestion'));
+        return view('interprete.solicitation', compact('solicitation'));
     }
 
     /**

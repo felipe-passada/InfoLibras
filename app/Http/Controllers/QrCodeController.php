@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Qrcode;
 use Gate;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,7 +18,7 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcodes = Qrcode::latest()->paginate(6);
+        $qrcodes = QrCodeModel::latest()->paginate(6);
         return view('funcionario.indexqrcode', compact('qrcodes'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
@@ -37,6 +36,23 @@ class QrCodeController extends Controller
         }
 
         return view('funcionario.createqrcode');
+    }
+
+    public function __construct(QrcodeModel $qrcodeModel)
+    {
+        $this->model = $qrcodeModel;
+    }
+
+    public function getAll()
+    {
+        $qrcodeModel = $this->model->all();
+        return response()->json($qrcodeModel);
+    }
+
+    public function get($id)
+    {
+        $qrcodeModel = $this->model->find($id);
+        return response()->json($qrcodeModel);
     }
 
     /**
@@ -151,19 +167,7 @@ class QrCodeController extends Controller
             ->with('success', 'O qrcode excluído com sucesso');
     }
 
-    // public function __construct(QrcodeModel $qrcodeModel) {
-    //     $this->model = $qrcodeModel;
-    // }
-
-    // public function getAll() {
-    //     $qrcodeModel = $this->model->all();
-    //     return response()->json($qrcodeModel);
-    // }
-
-    // public function get($id) {
-    //     $qrcodeModel = $this->model->find($id);
-    //     return response()->json($qrcodeModel);
-    // }
+    
 
     // public function store(Request $request) {
     //     $data = [
