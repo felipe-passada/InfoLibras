@@ -44,6 +44,7 @@
               <th width="50px"><b>No.</b></th>
               <th width="230px">Título</th>
               <th>Conteúdo</th>
+              <th>QR Code</th>
               <th width="200px">Ação</th>
             </tr>
 
@@ -51,6 +52,7 @@
             <tr>
               <td><b>{{++$i}}.</b></td>
               <td>{{$qrcode->title}}</td>
+              <td><img src="{{asset("storage/qrcodes/$qrcode->path".'.png')}}" style="height:100px;width:100px"></td>
               <td>{{$qrcode->content}}</td>
 
               <td>

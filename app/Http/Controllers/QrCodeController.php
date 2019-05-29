@@ -8,6 +8,7 @@ use App\Model\QrCodeModel;
 use App\Model\Video;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class QrCodeController extends Controller
 {
@@ -81,8 +82,8 @@ class QrCodeController extends Controller
             $qrcodeModel->content = $video->video;
             $qrcodeModel->video = $video->id;
         }
-        
-        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path('app/public/qrcode.png'));
+        $qrcodeFile = Str::random(40); 
+        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path("app\\public\\qrcodes\\$qrcodeFile").".png");
         $qrcodeModel->servidor_id = $request->user()->id;
         $qrcodeModel->save();
 
@@ -169,35 +170,6 @@ class QrCodeController extends Controller
         return redirect()->route('qrcode.index')
             ->with('success', 'O qrcode excluído com sucesso');
     }
-
-    
-
-    // public function store(Request $request) {
-    //     $data = [
-    //         'title' => $title = $request->input('title'),
-    //         'content' => $content = $request->input('content'),
-    //         'path' => $path = public_path('storage/qrcode/'. Str::snake($title) . '.svg'),
-    //         'description' => $description = $request->input('description')
-    //     ];
-
-    //     $qrcode = \QrCode::generate($content);
-    //     Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
-
-    //     $qrcodeModel = $this->model->create($data);
-    //     return response()->json($qrcodeModel);
-    // }
-
-    // public function update($id, Request $request) {
-    //     $qrcodeModel = $this->model->find($id)
-    //         ->update($request->all());
-    //     return response()->json($qrcodeModel);
-    // }
-
-    // public function destroy($id) {
-    //     $qrcodeModel = $this->model->find($id)
-    //         ->delete();
-    //     return response()->json($qrcodeModel);
-    // }
 
 }
 
