@@ -3,7 +3,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Video;
+use App\Model\Solicitation;
 use Gate;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 class VideoInterpreteController extends Controller
 {
@@ -28,12 +31,15 @@ class VideoInterpreteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Solicitation $solitation)
     {
 
         if (!Gate::allows('isInterprete')) {
             abort(404, "Sorry, You can do this actions");
         }
+        $video = new Video();
+        $video->solicitation_id = $solicitation->id;
+        $solicitation->save();
 
         return view('interprete.createvideo');
     }
@@ -49,13 +55,13 @@ class VideoInterpreteController extends Controller
         if (!Gate::allows('isInterprete')) {
             abort(404, "Sorry, You can do this actions");
         }
-
         $video = new Video();
-        $video->description = $request->input('textareaDescricao');
-        $video->interpreter_id = $request->user()->id;
-        $video->sugestion_id = $request->user()->id;
+        $video->titulo = $request->input('titulo');
+        $video->video = $request->input('video');
+        if($request->has('img')){
+            $video->thumbnail = $request->file('img')->store('thumbnail', 'public');
+        }
         $video->save();
-
         // User::create($request->all());
         return redirect()->route('videos.index')
             ->with('success', 'Novo video criado com sucesso');
@@ -68,14 +74,15 @@ class VideoInterpreteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
+        // if (!Gate::allows('isInterprete') && !Gate::allows('isServidor')) {
+        //     abort(404, "Sorry, You can do this actions");
+        // }
 
-        $video = Video::find($id);
-        return view('interprete.detail', compact('videos'));
+        $videos = Video::latest()->paginate(6);
+        return view('funcionario.traducoes', compact('videos'))
+            ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
     /**

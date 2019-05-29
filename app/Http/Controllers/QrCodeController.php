@@ -3,13 +3,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gate;
-use Illuminate\Support\Str;
-
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use App\Model\QrCodeModel;
 use Illuminate\Support\Facades\Storage;
-
-
+use App\Model\QrCodeModel;
+use App\Model\Video;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\DB;
 
 class QrCodeController extends Controller
 {
@@ -34,14 +32,15 @@ class QrCodeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Video $video)
     {
 
         if (!Gate::allows('isServidor')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('funcionario.createqrcode');
+        $videos =  DB::table('videos')->get();
+        return view('funcionario.createqrcode', compact('videos'));
     }
 
     public function __construct(QrcodeModel $qrcodeModel)
@@ -73,31 +72,22 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        // $qrcode = new Qrcode();
-        // $qrcode->title = $request->input('formTitulo');
-        // $qrcode->content = $request->input('formConteudo');
-        // $qrcode->description = $request->input('textareaDescricao');
-        // $qrcode->save();
+        $qrcodeModel = new QrCodeModel();
+        $qrcodeModel->title = $request->input('formTitulo');
+        $qrcodeModel->description = $request->input('textareaDescricao');
 
-        $data = [
-            'title' => $title = $request->input('formTitulo'),
-            'content' => $content = $request->input('formConteudo'),
-            'path' => $path = public_path('storage/qrcode/' . Str::snake($title) . '.svg'),
-            'description' => $description = $request->input('textareaDescricao'),
-            'video' => $video = $request->user()->id,
-            'servidor_id' => $servidor_id = $request->user()->id
+        if($request->input('video')) {
+            $video = Video::find($request->input('video'));
+            $qrcodeModel->content = $video->video;
+            $qrcodeModel->video = $video->id;
+        }
         
-        ];
+        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path('app/public/qrcode'));
+        $qrcodeModel->servidor_id = $request->user()->id;
+        $qrcodeModel->save();
 
-        $qrcode = \QrCode::generate($content);
-        Storage::disk('local')->put(Str::snake($title) . '.svg', $qrcode);
-
-        $qrcodeModel = $this->model->create($data);
-        return response()->json($qrcodeModel);
-
-        // User::create($request->all());
         return redirect()->route('qrcode.index')
-            ->with('success', 'Novo Qq code criado com sucesso');
+            ->with('success', 'Novo video criado com sucesso');
     }
 
 

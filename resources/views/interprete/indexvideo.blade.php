@@ -37,13 +37,13 @@
 
           <div style="margin-top: 30px;"></div>
 
-          <form action="{{route('video.store')}}" method="post">
+          <form action="{{route('videos.store')}}" enctype="multipart/form-data" method="post">
             @csrf
             
             <div class="pl-lg-4">
 
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Titulo</label>
                     <input id="titulo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="titulo" value="{{ old('titulo') }}" required autofocus>
@@ -57,12 +57,30 @@
                 </div>
 
               </div>
+              <div class="row">
+              
+                <div class="col">
+                  <div class="form-group">
+
+                    <label class="form-control-label" for="input-username">Video</label>
+
+                    <select class="custom-select" name ="video">
+                    <option selected>Selecione um video</option>
+                    <option value="https://www.youtube.com/watch?v=WvQlhMjGo4M">BURACOS NEGROS, como eles surgem?</option>
+                    <option value="https://www.youtube.com/watch?v=Bl8Q7Lt56y0">A origem do universo | Teoria do BIG BANG</option>
+                    <option value="https://www.youtube.com/watch?v=DAyKeqm2_uc">Como tornar MARTE habitável? Com Iberê</option>
+                  </select>
+
+                  </div>
+                </div>
+
+              </div>
 
               <div style="margin-top: 40px;"></div>
 
               <div class="">
-                <input type="file" id="real-file" hidden="hidden" />
-                <button type="button" id="custom-button" class="btn">Escolhar um arquivo</button>
+                <input type="file" name="img" id="real-file" hidden="hidden" />
+                <button type="button" id="custom-button" class="btn">Escolhar uma foto de thumbnail</button>
                 <span id="custom-text">Nenhum arquivo escolhido, ainda.</span>
               </div>
 
