@@ -82,7 +82,7 @@ class QrCodeController extends Controller
             $qrcodeModel->video = $video->id;
         }
         
-        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path('app/public/qrcode'));
+        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path('app/public/qrcode.png'));
         $qrcodeModel->servidor_id = $request->user()->id;
         $qrcodeModel->save();
 
@@ -103,7 +103,7 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = Qrcode::find($id);
+        $qrcode = QrCodeModel::find($id);
         return view('funcionario.detailqrcode', compact('qrcode'));
     }
 
@@ -119,7 +119,7 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = Qrcode::find($id);
+        $qrcode = QrCodeModel::find($id);
         return view('funcionario.editqrcode', compact( 'qrcode'));
     }
 
@@ -137,12 +137,17 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = Qrcode::find($id);
-        $qrcode->title = $request->input('formTitulo');
-        $qrcode->content = $request->input('formConteudo');
-        $qrcode->description = $request->input('textareaDescricao');
+        $qrcodeModel = QrCodeModel::find($id);
+        $qrcodeModel->title = $request->input('formTitulo');
+        $qrcodeModel->description = $request->input('textareaDescricao');
+
+        $qrcodeModel->content = $request->input('formConteudo');
+
+        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path('app/public/qrcode.png'));
+        $qrcodeModel->servidor_id = $request->user()->id;
+        $qrcodeModel->save();
         
-        $qrcode->save();
+       
         return redirect()->route('qrcode.index')
             ->with('success', 'O qrcode atualizado com sucesso');
     }
@@ -159,7 +164,7 @@ class QrCodeController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $qrcode = Qrcode::find($id);
+        $qrcode = QrCodeModel::find($id);
         $qrcode->delete();
         return redirect()->route('qrcode.index')
             ->with('success', 'O qrcode excluído com sucesso');
