@@ -16,6 +16,7 @@ class CreateSolicitationsTable extends Migration
         Schema::create('solicitations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->enum('status', ['waiting','working'])->default('waiting');
             $table->unsignedInteger('sugestion_id');
             $table->unsignedBigInteger('interpreter_id');
             $table->foreign('interpreter_id')

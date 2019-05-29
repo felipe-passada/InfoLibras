@@ -212,6 +212,11 @@
                 <span>QR Code</span>
               </a>
 
+              <a class="collapse-item" href="{{ url('videos/show') }}">
+                <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
+                <span>Traduções</span>
+              </a>
+
             </div>
           </div>
 

@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlTextarea3"><strong>Description : </strong></label>
                                     <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control">
-                                    {{$solicitation->description}}
+                                   
                                     </textarea>
                                     <div style="margin-top: 20px;"></div>
                                 </div>
@@ -40,7 +40,8 @@
                         </div>
 
                         <div class="col-md-12">
-                            <a href="{{route('solicitacao.index')}}" class="btn btn-sm btn-success">De volta</a>
+                            <a href="{{route('solicitacao.index')}}" class="btn btn-sm btn-danger">Voltar <i class="fa fa-chevron-circle-left"></i></a>
+                            <a href="{{route('solicitacao.update', '$sugestion->id')}}" class="btn btn-sm btn-success">Traduzir <i class="fa fa-check-circle"></i></a>
                         </div>
                     </div>
                 </div>

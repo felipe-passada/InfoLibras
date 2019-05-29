@@ -35,7 +35,7 @@
                     </div>
                     @endif
 
-                    <form action="{{route('qrcode.store')}}" method="post">
+                    <form action="{{route('qrcode.store')}}" enctype="multipart/form-data"  method="post">
                         @csrf
                         <div class="pl-lg-4">
 
@@ -58,19 +58,25 @@
                             <div class="row">
                                 <div class="col-lg-10">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-username">Conteúdo</label>
-                                        <input id="conteudo" name="formConteudo" type="text" class="form-control{{ $errors->has('conteudo') ? ' is-invalid' : '' }}" name="conteudo" required>
 
-                                        @if ($errors->has('conteudo'))
+                                        <label class="form-control-label" for="input-username">Video</label>
+                                        <select class="custom-select" name ="video">
+                                            <option selected>Selecione um video</option>
+                                            @foreach ($videos as $video)
+                                            <option value="{{$video->id}}"> {{$video->titulo}} </option>
+                                            @endforeach
+                                        </select>
+
+                                        @if ($errors->has('video'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('conteudo') }}</strong>
+                                            <strong>{{ $errors->first('video') }}</strong>
                                         </span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-5">
 
                                 <div class="col-10">
                                     <div class="form-group">

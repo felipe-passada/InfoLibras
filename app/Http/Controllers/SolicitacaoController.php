@@ -107,20 +107,10 @@ class SolicitacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
-
-        $solicitation = Solicitation::find($id);
-        $solicitation->name = $request->get('');
-        $solicitation->email = $request->get('');
-        $solicitation->user_type = $request->input('');
-        $solicitation->save();
-        return redirect()->route('solicitacao.index')
-            ->with('success', 'O solicitação atualizado com sucesso');
+        echo "Entrou Aqui!";
+        die();
     }
 
     /**
