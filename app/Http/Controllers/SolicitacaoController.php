@@ -80,8 +80,8 @@ class SolicitacaoController extends Controller
             abort(404, "Sorry, You can do this actions");
         }
 
-        $solicitation = Solicitation::find($id);
-        return view('interprete.detailsolicitation', compact('solicitation'));
+        $solicitacao = Solicitation::find($id);
+        return view('interprete.detailsolicitation', compact('solicitacao'));
     }
 
     /**
@@ -107,10 +107,10 @@ class SolicitacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update($id)
     {
-        echo "Entrou Aqui!";
-        die();
+        $solicitation = Solicitation::find($id);
+        $video = new VideoAudiovisualController($solicitation);
     }
 
     /**

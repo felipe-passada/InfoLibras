@@ -82,8 +82,8 @@ class QrCodeController extends Controller
             $qrcodeModel->content = $video->video;
             $qrcodeModel->video = $video->id;
         }
-        $qrcodeFile = Str::random(40); 
-        $qrcodeModel->path = \QrCode::format('png')->generate($qrcodeModel->content, storage_path("app\\public\\qrcodes\\$qrcodeFile").".png");
+        $qrcodeModel->path = $qrcodeFile = Str::random(40); 
+        \QrCode::format('png')->generate($qrcodeModel->content, storage_path("app\\public\\qrcodes\\$qrcodeFile").".png");
         $qrcodeModel->servidor_id = $request->user()->id;
         $qrcodeModel->save();
 

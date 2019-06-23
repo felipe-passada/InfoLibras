@@ -10,16 +10,16 @@
         <div style="margin-top: 20px;"></div>
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">DETALHE DE SOLICITAÇÃO</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-        </div>
-
         <div class="col-12">
 
-            <div style="margin-top: 50px;"></div>
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-success">Solicitação de tradução</h6>
+            </div>
 
             <div class="card-body bg-white">
+                <form action="{{route('solicitacao.update',$solicitacao->id)}}" method="post">
+                @csrf
+                @method('PUT')
 
                 <div style="margin-top: 30px;"></div>
 
@@ -27,24 +27,22 @@
 
                     <div class="row">
                         <div class="col-10">
-                            <fieldset disabled>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea3"><strong>Description : </strong></label>
-                                    <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control">
-                                   
-                                    </textarea>
-                                    <div style="margin-top: 20px;"></div>
-                                </div>
-                                <div style="margin-top: 25px;"></div>
-                            </fieldset>
+                            <h2>Assunto:</h2>
+                            <p>
+                                {{ $solicitacao->description }}
+                            </p>
+
+                            <p> <b>Categoria: </b> Traducao de Informações </p>
+                            <p> <b>Area:</b> Biblioteca </p>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-5">
                             <a href="{{route('solicitacao.index')}}" class="btn btn-sm btn-danger">Voltar <i class="fa fa-chevron-circle-left"></i></a>
-                            <a href="{{route('solicitacao.update', '$sugestion->id')}}" class="btn btn-sm btn-success">Traduzir <i class="fa fa-check-circle"></i></a>
+                            <button type="submit" class="btn btn-sm btn-success">Traduzir <i class="fa fa-check-circle"></i></button>
                         </div>
                     </div>
                 </div>
+                </form>
                 <div style="margin-top: 40px;"></div>
             </div>
         </div>
