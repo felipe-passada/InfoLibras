@@ -110,7 +110,20 @@ class SolicitacaoController extends Controller
     public function update($id)
     {
         $solicitation = Solicitation::find($id);
-        $video = new VideoAudiovisualController($solicitation);
+
+        if ($solicitation->status == "waiting") {
+            $solicitation->status = "working";
+
+            $video = new VideoController;
+            $id = $video->store($solicitation);
+            $solicitation->video_id = $id;
+            $solicitation->save();
+
+            redirect()->route('solicitacao.index')
+            ->with('success', 'Novo video criado com sucesso');
+        }
+
+
     }
 
     /**

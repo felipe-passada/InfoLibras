@@ -1,25 +1,29 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Solicitation;
 use App\Model\Video;
+use Illuminate\Support\Facades\DB;
 use Gate;
 
-class VideoAudiovisualController extends Controller
+
+class VideoController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        if (!Gate::allows('isAudiovisual')) {
+        if (!Gate::allows('isAudiovisual') ||!Gate::allows('isInterprete')) {
             abort(404, "Sorry, You can do this actions");
         }
 
         $videos = Video::latest()->paginate(6);
-        return view('audiovisual.indexvideo', compact('videos'))
+        return view('video.index', compact('videos'))
             ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
@@ -30,12 +34,11 @@ class VideoAudiovisualController extends Controller
      */
     public function create()
     {
-
-        if (!Gate::allows('isAudiovisual')) {
+        if (!Gate::allows('isAudiovisual') && !Gate::allows('isInterprete')) {
             abort(404, "Sorry, You can do this actions");
         }
 
-        return view('audiovisual.createvideo');
+        return view('videos.index');
     }
 
     /**
@@ -44,21 +47,13 @@ class VideoAudiovisualController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Solicitation $solicitation)
     {
-        if (!Gate::allows('isAudiovisual')) {
-            abort(404, "Sorry, You can do this actions");
-        }
-
         $video = new Video();
-        $video->description = $request->input('textareaDescricao');
-        $video->interpreter_id = $request->user()->id;
-        $video->sugestion_id = $request->user()->id;
+        $video->titulo = "teste";
         $video->save();
 
-        // User::create($request->all());
-        return redirect()->route('video.index')
-            ->with('success', 'Novo video criado com sucesso');
+        return $video->id;
     }
 
 
@@ -135,4 +130,3 @@ class VideoAudiovisualController extends Controller
             ->with('success', 'O video excluído com sucesso');
     }
 }
-

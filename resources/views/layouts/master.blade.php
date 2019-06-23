@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Home</title>
+  <title>Infolibras - Home</title>
 
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -220,7 +220,7 @@
         @can('isInterprete')
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('videos') }}">
+          <a class="nav-link" href="{{ url('videos/create') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Vídeo</span>
           </a>
