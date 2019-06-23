@@ -15,16 +15,20 @@ class CreateSolicitationsTable extends Migration
     {
         Schema::create('solicitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
-            $table->enum('status', ['waiting','working'])->default('waiting');
+            $table->string('description', 800);
+            $table->enum('status', ['waiting','working', 'finished'])->default('waiting');
             $table->unsignedInteger('sugestion_id');
-            $table->unsignedBigInteger('interpreter_id');
+            $table->unsignedBigInteger('interpreter_id')->nullable();
+            $table->unsignedInteger('video_id')->nullable();
             $table->foreign('interpreter_id')
                 ->references('id')
                 ->on('users');
             $table->foreign('sugestion_id')
                 ->references('id')
                 ->on('sugestions');
+            $table->foreign('video_id')
+                ->references('id')
+                ->on('videos');
             $table->timestamps();
             $table->softDeletes();
         });

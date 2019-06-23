@@ -15,7 +15,7 @@ class CreateSugestionsTable extends Migration
     {
         Schema::create('sugestions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('description', 800);
             $table->enum('status', ['hold','aproved','refused']);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

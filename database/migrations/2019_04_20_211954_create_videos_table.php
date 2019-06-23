@@ -19,14 +19,10 @@ class CreateVideosTable extends Migration
             $table->string('video');
             $table->string('thumbnail');
             $table->enum('status', ['waiting','working', 'finished'])->default('waiting');
-            $table->unsignedBigInteger('audio_visual_id');
-            $table->unsignedInteger('solicitation_id');
+            $table->unsignedBigInteger('audio_visual_id')->nullable();
             $table->foreign('audio_visual_id')
                 ->references('id')
                 ->on('users');
-            $table->foreign('solicitation_id')
-                ->references('id')
-                ->on('solicitations');
             $table->timestamps();
             $table->softDeletes();
         });
