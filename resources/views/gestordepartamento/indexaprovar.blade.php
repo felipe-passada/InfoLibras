@@ -38,7 +38,8 @@
             <tr>
               <th width="50px" ><b>#</b></th>
               <th width="230px">Usuario</th>
-              <th width="230px">Sugestao</th>
+              <th width="230px">Descrição breve</th>
+              <th width="230px">Descrição detalhada</th>
               <th>Status</th>
               <th width="200px">Ação</th>
             </tr>
@@ -47,6 +48,7 @@
             <tr>
               <td>{{$sugestion->id}}</td>
               <td>{{$sugestion->name}}</td>
+              <td>{{$sugestion->title}}</td>
               <td>{{$sugestion->description}}</td>
               <td>{{$sugestion->status}}</td>
 

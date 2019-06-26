@@ -15,6 +15,7 @@ class CreateSolicitationsTable extends Migration
     {
         Schema::create('solicitations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title', 150);
             $table->string('description', 800);
             $table->enum('status', ['waiting','working', 'finished'])->default('waiting');
             $table->unsignedInteger('sugestion_id');

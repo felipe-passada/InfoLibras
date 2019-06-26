@@ -99,11 +99,12 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
 
-        if (!Gate::allows('isAudiovisual')) {
+        if (!Gate::allows('isAudiovisual') && !Gate::allows('isInterprete')) {
             abort(404, "Sorry, You can do this actions");
         }
 
         $video = Video::find($id);
+        dd($video);
         $video->name = $request->get('');
         $video->email = $request->get('');
         $video->user_type = $request->input('');
