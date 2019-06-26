@@ -23,7 +23,7 @@ class AprovarGestordepartamentoController extends Controller
         // $sugestions = Sugestion::latest()->paginate(6);
         $sugestions = DB::table('sugestions')
             ->join('users', 'user_id', '=', 'users.id')
-            ->select('sugestions.id', 'users.name', 'sugestions.description', 'sugestions.status')
+            ->select('sugestions.id', 'users.name', 'sugestions.title', 'sugestions.description', 'sugestions.status')
             ->get();
 
         // return \response()->json($sugestions);

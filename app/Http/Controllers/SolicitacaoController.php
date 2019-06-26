@@ -37,6 +37,7 @@ class SolicitacaoController extends Controller
         // }
 
         $solicitation = new Solicitation();
+        $solicitation->title = $sugestion->title;
         $solicitation->description = $sugestion->description;
         $solicitation->sugestion_id = $sugestion->id;
         $solicitation->save();
