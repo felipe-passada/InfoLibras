@@ -50,6 +50,7 @@ class SugestaoController extends Controller
         }
 
         $sugestion = new Sugestion();
+        $sugestion->title = $request->input('title');
         $sugestion->description = $request->input('textareaDescricao');
         $sugestion->user_id = $request->user()->id;
         $sugestion->save();

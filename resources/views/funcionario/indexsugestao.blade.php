@@ -19,14 +19,12 @@
 
     <div class="col-12">
 
-      <div style="margin-top: 30px;"></div>
-
       <div class="card-body bg-white">
+        <div class="p-5">
 
-        <div class="pl-lg-2">
-
-          <div style="margin-top: 20px;"></div>
-
+          <div class="text-center">
+            <h1 class="h3 text-gray-900 mb-4">Fazer uma sugestão</h1>
+          </div>
 
           @if ($message = Session::get('success'))
           <div class="alert alert-success">
@@ -34,16 +32,22 @@
           </div>
           @endif
 
-          <div style="margin-top: 30px;"></div>
-
           <form action="{{route('sugestao.store')}}" method="post">
             @csrf
 
             <div class="row">
-              <div class="col-10">
+
+              <div class="col-12">
                 <div class="form-group">
-                  <label for="exampleFormControlTextarea3">Descrição</label>
-                  <textarea id="name" name="textareaDescricao" id="exampleFormControlTextarea3" rows="7" class="form-control{{ $errors->has('textareaDescricao') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" value="{{ old('textareaDescricao') }}" required autofocus></textarea>
+                  <label for="title">Descrição breve:</label>
+                  <input type="text" name="title" class="form-control{{ $errors->has('textareaDescricao') ? ' is-invalid' : '' }}" class="form-control-label" value="{{ old('textareaDescricao') }}" required autofocus>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea3">Descrição detalhada:</label>
+                  <textarea id="textareaDescricao" name="textareaDescricao" id="exampleFormControlTextarea3" rows="5" class="form-control{{ $errors->has('textareaDescricao') ? ' is-invalid' : '' }}" class="form-control-label" value="{{ old('textareaDescricao') }}" required autofocus></textarea>
 
                   @if ($errors->has('textareaDescricao'))
                   <span class="invalid-feedback" role="alert">
@@ -53,19 +57,25 @@
 
                 </div>
               </div>
-            </div>
+              <!-- <div class="col-12">
+                <select class="custom-select">
+                  <option selected>Selecione a área do campus</option>
+                  <option value="1">Traduzir uma informação</option>
+                  <option value="2">Melhorar um tradução</option>
+                  <option value="3">Fazer uma sugestão de melhoria</option>
+                </select>
+              </div>
+            </div> -->
 
-            <div class="row">
+            <div class="row mt-5">
               <div class="col-md-12">
-                <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-lg btn-success">Enviar</button>
               </div>
             </div>
           </form>
 
+          </div>
         </div>
-
-        <div style="margin-top: 30px;"></div>
-      </div>
     </div>
     <div style="margin-top: 90px;"></div>
   </div>
