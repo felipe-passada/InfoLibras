@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Sugestion;
 use App\Model\Solicitation;
+use App\Model\Video;
 use Gate;
 
 class SolicitacaoController extends Controller
@@ -108,20 +109,16 @@ class SolicitacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Video $video, $id)
     {
         $solicitation = Solicitation::find($id);
 
         if ($solicitation->status == "waiting") {
             $solicitation->status = "working";
 
-            $video = new VideoController;
-            $id = $video->store($solicitation);
-            $solicitation->video_id = $id;
+            $solicitation->video_id = $video->id;
             $solicitation->save();
-
-            redirect()->route('solicitacao.index')
-            ->with('success', 'Novo video criado com sucesso');
+            return true;
         }
 
 
