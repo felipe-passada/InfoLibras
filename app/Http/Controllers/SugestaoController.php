@@ -57,7 +57,7 @@ class SugestaoController extends Controller
 
         // User::create($request->all());
         return redirect()->route('sugestao.index')
-            ->with('success', 'Novo sugestão criado com sucesso');
+            ->with('success', 'Nova sugestão criada com sucesso');
     }
 
 
@@ -113,7 +113,7 @@ class SugestaoController extends Controller
         $sugestion->user_type = $request->input('');
         $sugestion->save();
         return redirect()->route('sugestao.index')
-            ->with('success', 'O sugestão atualizado com sucesso');
+            ->with('success', 'Sugestão atualizado com sucesso');
     }
 
     /**
@@ -131,6 +131,6 @@ class SugestaoController extends Controller
         $sugestion = Sugestion::find($id);
         $sugestion->delete();
         return redirect()->route('sugestao.index')
-            ->with('success', 'O sugestão excluído com sucesso');
+            ->with('success', 'Sugestão excluído com sucesso');
     }
 }

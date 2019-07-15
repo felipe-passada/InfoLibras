@@ -2,90 +2,51 @@
 
 @section('content')
 
-<!-- Main Content -->
 <div id="content">
-
-
 
   <!-- Begin Page Content -->
   <div class="container-fluid">
 
     <div style="margin-top: 20px;"></div>
 
+    @can('isAudiovisual')
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">SOLICITAÇÃO</h1>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+      <h1 class="h3 mb-0 text-gray-800">
+        Edição de videos<i class="fas fa-sign-language"></i>
+      </h1>
     </div>
+    @endcan
 
-    <!-- Content Row -->
-    <div class="col-12">
-      
-      <div class="card col-12">
+    @can('isServidor')
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">
+        Videos<i class="fas fa-sign-language"></i>
+      </h1>
+    </div>
+    @endcan
 
-        <div class="card-body">
-          <form method="POST" action="{{ route('register') }}">
-            {{ csrf_field() }}
-            <h6 class="heading-small text-muted mb-4">Cadastro</h6>
-            <div class="pl-lg-4">
+    <hr class="text-gray-800">    
+    <div class="row">
+    @foreach($videos as $video)
 
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-username">Titulo</label>
-                    <input id="titulo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }}" class="form-control-label" id="input-username" name="titulo" value="{{ old('titulo') }}" required autofocus>
-
-                    @if ($errors->has('titulo'))
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('titulo') }}</strong>
-                    </span>
-                    @endif
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea3">Conteúdo</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
-                  </div>
-                </div>
-
-              </div>
-
-
-
-
-
-
-              <div style="margin-top: 30px;"></div>
-
-              <div class="form-group row">
-                <label for="password-confirm" class=" col-form-label text-md-right"></label>
-                <div class="col-md-3 ">
-                  <button type="submit" class="btn btn-info btn-user btn-block">
-                    {{ __('Socicitação tradução') }}
-                  </button>
-                </div>
-
-              </div>
-              <div style="margin-top: 27px;"></div>
-
-
-
-          </form>
+      <div class="col-xl-3 col-md-12 mb-4">
+        <div class="card">
+          <div class="card-img-top">
+            <a href="{{$video->video}}" target="_blank">
+              <img src="{{asset("storage/$video->thumbnail")}}" class="card-img-top" alt="...">
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><b>Titulo:</b> {{$video->titulo}}</h5>
+            <p class="card-text"><b>Status:</b> {{$video->status}}</p>
+            @can('isAudiovisual')
+            <a href="{{route('videos.show',$video->id)}}" class="btn btn-primary">Detalhes</a>
+            @endcan
+          </div>
         </div>
       </div>
-    </div>
-
-
-
-
-  </div>
-  <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
-
-
+    @endforeach
 
 @endsection

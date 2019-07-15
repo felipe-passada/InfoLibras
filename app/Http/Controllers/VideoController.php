@@ -17,17 +17,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
-
-        $test = "entrou aqui";
-
-        return $test;
-
-        // $videos = Video::latest()->paginate(6);
-        // return view('interprete.indexvideo', compact('videos'))
-        //     ->with('i', (request()->input('page', 1) - 1) * 6);
+        $videos = Video::latest()->paginate(6);
+        return view('videos.index', compact('videos'))
+            ->with('i', (request()->input('page', 1) - 1) * 6);
     }
 
     /**
@@ -35,11 +27,9 @@ class VideoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        if (!Gate::allows('isInterprete')||!Gate::allows('isAudiovisual')) {
-            abort(404, "Sorry, You can do this actions");
-        }
+        
     }
 
     /**
@@ -78,15 +68,14 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         // if (!Gate::allows('isInterprete') && !Gate::allows('isServidor')) {
         //     abort(404, "Sorry, You can do this actions");
         // }
 
-        $videos = Video::latest()->paginate(6);
-        return view('funcionario.traducoes', compact('videos'))
-            ->with('i', (request()->input('page', 1) - 1) * 6);
+        $videos = Video::find($id);
+        return view('videos.details', compact('videos'));
     }
 
     /**
@@ -95,14 +84,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
 
         $video = Video::find($id);
-        return view('interprete.edit', compact('videos'));
+        return view('videos.details', compact('videos'));
     }
 
     /**
@@ -112,20 +98,23 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
 
-        if (!Gate::allows('isInterprete')) {
-            abort(404, "Sorry, You can do this actions");
-        }
-
+        $info = $request->all();
+        dd($info);
         $video = Video::find($id);
-        $video->name = $request->get('');
-        $video->email = $request->get('');
-        $video->user_type = $request->input('');
+        $video->video = $request->get('link');
+        $video->user_id = $request->user()->id;
+
+        if ($video->staus == "waiting")  {
+            $video->status = "working";
+        }
+        
         $video->save();
+
         return redirect()->route('videos.index')
-            ->with('success', 'O video atualizado com sucesso');
+            ->with('success', 'O video foi atualizado com sucesso');
     }
 
     /**

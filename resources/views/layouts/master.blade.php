@@ -187,33 +187,24 @@
           @endcan
 
           @can('isServidor')
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Configurações</span>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('qrcode') }}">
+            <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
+            <span>QR Code</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Configurações:</h6>
+        </li>
 
-
-              <a class="collapse-item" href="{{ url('qrcode') }}">
-                <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-                <span>QR Code</span>
-              </a>
-
-              <a class="collapse-item" href="{{ url('videos/show') }}">
-                <i class="fa fa-fw fa-video" aria-hidden="true"></i>
-                <span>Traduções</span>
-              </a>
-
-            </div>
-          </div>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('videos') }}">
+            <i class="fa fa-fw fa-video" aria-hidden="true"></i>
+            <span>Traduções</span>
+          </a>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url('sugestao') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Sugestão</span></a>
+          <i class="fas fa-comments"></i>
+            <span>Sugestões</span></a>
         </li>
 
         @endcan
@@ -247,51 +238,17 @@
         @can('isAudiovisual')
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ url('video') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
+          <a class="nav-link" href="{{ url('videos') }}">
+            <i class="fas fa-video"></i>
             <span>Vídeo</span>
           </a>
         </li>
 
         @endcan
-
-        <!-- @can('isUser')
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Configurações</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Configurações:</h6>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-user-plus" aria-hidden="true"></i>
-              <span>Usuário</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-qrcode" aria-hidden="true"></i>
-              <span>QR Code</span>
-            </a>
-
-            <a class="collapse-item" href="">
-              <i class="fa fa-fw fa-sign-language" aria-hidden="true"></i>
-              <span>Intérprete</span>
-            </a>
-
-          </div>
-        </div>
-        @endcan -->
         </li>
 
       </ul>
       <!-- End of Sidebar -->
-
-
-
-
-
-
 
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
