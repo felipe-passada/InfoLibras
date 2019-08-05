@@ -26,7 +26,7 @@
 
 
                                         <div class="col-md-12">
-                                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de e-mail...">
+                                            <input id="email" type="email" autocomplete="off" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Insira o endereço de e-mail...">
 
                                             @if ($errors->has('email'))
                                             <span class="invalid-feedback" role="alert">

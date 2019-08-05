@@ -23,8 +23,9 @@
                         <div class="col-12 text-center">
                             <h1 class="h3 mb-4">Upload video de tradução</h1>
                         </div>
-                        <form action="{{route('videos.update', $videos->id)}}" method="put">
-                        {{ csrf_field() }}
+                        <form action="{{route('videos.update', $videos->id)}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">

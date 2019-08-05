@@ -101,11 +101,9 @@ class VideoController extends Controller
     public function update($id, Request $request)
     {
 
-        $info = $request->all();
-        dd($info);
         $video = Video::find($id);
         $video->video = $request->get('link');
-        $video->user_id = $request->user()->id;
+        $video->audio_visual_id = $request->user()->id;
 
         if ($video->staus == "waiting")  {
             $video->status = "working";

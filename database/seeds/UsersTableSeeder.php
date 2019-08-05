@@ -16,12 +16,12 @@ class UsersTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1,10) as $index) {
-            $name = $faker->name;
+        for($i = 0; $i < 5; $i++) {
+            $name = ['admin', 'servidor', 'gestor', 'interprete', 'audiovisual'];
 
             DB::table('users')->insert([
-                'name' => $name,
-                'email' => Str::snake($name).'@ifsp.com',
+                'name' => $name[$i],
+                'email' => $name[$i].'@ifsp.com',
                 'user_type' => $faker->randomElement(
                     ['admin','servidor','interprete','gestor_dpto', 'audio_visual']
                 ),
