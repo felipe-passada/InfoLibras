@@ -5,21 +5,11 @@ Aplicação de acessibilidade para surdos no IFSP - Campus GRU
 ## Pré-requisitos
 Para o projeto rodar, voce necessita das seguintes depedencias:
 
-PHP:
-- PHP >= 7.1.3
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
-- Ctype PHP Extension
-- JSON PHP Extension
-- BCMath PHP Extension
+* PHP.
+* MYSQL.
+* Servidor HTTP (NGINX ou APACHE)
 
-DB:
-- MYSQL OU MARIADB
-
-Em ambiente de prod voce necessitara um servidor para rodar a aplicacao, voce pode usar solucoes como o [Apache2](https://httpd.apache.org/) ou [NGINX](https://www.nginx.com/).
+Em ambiente de produção voce necessitara um servidor http nativo para rodar a aplicacao, voce pode usar solucoes como o [Apache2](https://httpd.apache.org/) ou [NGINX](https://www.nginx.com/).
 
 
 ## Iniciando
@@ -27,7 +17,7 @@ Em ambiente de prod voce necessitara um servidor para rodar a aplicacao, voce po
 Clone o projeto na sua maquina:
 
 ````shell
-$git clone http://git.ifspguarulhos.edu.br/gu1662287/InfoLibras-IFSP.git
+$ git clone http://git.ifspguarulhos.edu.br/gu1662287/InfoLibras-IFSP.git
 ````
 ### Configuracao da aplicacao
 Depois de clonar em sua maquina sera necessario baixar as dependencias do projeto, isso sera necessario somente na primeira vez que voce baixar o projeto.
@@ -77,6 +67,8 @@ Caso voce tenha alguma duvida que nao ficou claro nesta doc. Voce pode consultar
 * Composer - Dependency Manager for PHP
 * BootStrap - Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.
 * NPM - npm is the package manager for JavaScript and the world’s largest software registry.
+* PHP -
+* MYSQL - 
 
 ## Autores
 
