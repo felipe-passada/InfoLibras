@@ -10,11 +10,8 @@
 
   <title>Register</title>
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  <!-- Styles -->
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{secure_asset('css/app.css')}}" rel="stylesheet">
+  <link href="{{secure_asset('js/app.js')}}">
 </head>
 
 <body class="bg-gradient" style="background-image: url('img/background.jpg');">

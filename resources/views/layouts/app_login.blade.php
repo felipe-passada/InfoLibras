@@ -10,11 +10,8 @@
 
   <title>Login</title>
 
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  <!-- Fonts -->
-  <link href="{{asset('css/app.css')}}" rel="stylesheet">
+  <link href="{{secure_asset('css/app.css')}}" rel="stylesheet">
+  <link href="{{secure_asset('js/app.js')}}">
 
   <!-- Custom fonts for this template-->
 
