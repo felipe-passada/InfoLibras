@@ -16,8 +16,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <link href="{{secure_asset('css/app.css')}}" rel="stylesheet">
-  <link href="{{secure_asset('js/app.js')}}">
+  <link href="{{asset('css/app.css')}}" rel="stylesheet">
+  <link href="{{asset('js/app.js')}}">
 
 </head>
 
